@@ -189,6 +189,10 @@ public class Diccionario extends javax.swing.JFrame {
         try {
             cadena = txtarea_trad1.getText();
             String[] arreglo = cadena.split(",");
+            
+            for (int i = 0; i < arreglo.length; i++)
+                JOptionPane.showMessageDialog(null, arreglo[i], "ARREGLO " + i, JOptionPane.INFORMATION_MESSAGE);
+            
             if ("INGLES".equals(lbl_i1.getText()))
                 txtarea_trad2.setText(traduce_to_Español(arreglo));
             if ("ESPAÑOL".equals(lbl_i1.getText()))
