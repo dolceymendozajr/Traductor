@@ -42,16 +42,30 @@ public class Diccionario extends javax.swing.JFrame {
     public int lim = 100;
 
     public Diccionario() {
-        try {
-            String limite="";
-            limite = JOptionPane.showInputDialog(null, "Escriba el limite de palabras (Mayor o igual que 100)", "Cambio de limite", JOptionPane.QUESTION_MESSAGE);
-            if (!limite.isEmpty()) {
-                lim = Integer.parseInt(limite);
+        boolean sw = true;
 
+        while (sw) {
+            try {
+                String limite = "";
+
+                limite = JOptionPane.showInputDialog(null, "Escriba el limite de palabras (Mayor o igual que 100)", "Cambio de limite", JOptionPane.QUESTION_MESSAGE);
+                if ((limite != null) && (!limite.isEmpty())) {
+                    lim = Integer.parseInt(limite);
+                    if (lim < 100) {
+                        JOptionPane.showMessageDialog(null, "Debe ingresar un valor mayor que 100");
+                        continue;
+                    }
+                    sw = false;
+                }
+                if(limite==null)
+                {
+                    sw=false;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico");
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico", "Error", JOptionPane.ABORT);
         }
+
         initComponents();
     }
 
