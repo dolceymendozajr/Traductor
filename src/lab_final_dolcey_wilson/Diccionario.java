@@ -58,10 +58,8 @@ public class Diccionario extends javax.swing.JFrame {
                     }
                     sw = false;
                 }
-                if(limite==null)
-                {
-                    sw=false;
-                }
+                if (limite==null)
+                    sw = false;
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico!");
             }
@@ -191,12 +189,10 @@ public class Diccionario extends javax.swing.JFrame {
         try {
             cadena = txtarea_trad1.getText();
             String[] arreglo = cadena.split(",");
-            if ("INGLES".equals(lbl_i1.getText())) {
+            if ("INGLES".equals(lbl_i1.getText()))
                 txtarea_trad2.setText(traduce_to_Español(arreglo));
-            }
-            if ("ESPAÑOL".equals(lbl_i1.getText())) {
+            if ("ESPAÑOL".equals(lbl_i1.getText()))
                 txtarea_trad2.setText(traduce_to_Ingles(arreglo));
-            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al digitar los textos a traducir", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -255,12 +251,10 @@ public class Diccionario extends javax.swing.JFrame {
         for (int i = 0; i < ing.length; i++) {
             for (int j = 0; j < p_ingles.length; j++) {
                 if (ing[i].equals(p_ingles[j])) {
-                    if (!trad.isEmpty()) {
+                    if (!trad.isEmpty())
                         trad = trad + "," + p_español[j];
-                    } else {
+                    else
                         trad = p_español[j];
-                    }
-
                 }
             }
         }
@@ -272,11 +266,10 @@ public class Diccionario extends javax.swing.JFrame {
         for (int i = 0; i < esp.length; i++) {
             for (int j = 0; j < 10; j++) {
                 if (esp[i].equals(p_español[j])) {
-                    if (!trad.isEmpty()) {
+                    if (!trad.isEmpty())
                         trad = trad + "," + p_ingles[j];
-                    } else {
+                    else
                         trad = p_ingles[j];
-                    }
                 }
             }
         }
