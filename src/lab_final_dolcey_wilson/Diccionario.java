@@ -19,6 +19,7 @@ public class Diccionario extends javax.swing.JFrame {
         "professional", "quit", "blue", "taste",
         "achieve", "avoid", "distractions", "factors",
         "dark", "goals", "", "", "", "", "", "", "", "", "", ""};
+    
 
     public static String p_español[] = {"consejo", "carrera", "desafío", "experiencia",
         "contratar", "ideal", "entrevista", "gerente",
