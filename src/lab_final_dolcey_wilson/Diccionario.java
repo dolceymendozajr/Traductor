@@ -62,7 +62,7 @@ public class Diccionario extends javax.swing.JFrame {
                     sw=false;
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico");
+                JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico!");
             }
         }
 
