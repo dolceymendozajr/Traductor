@@ -1,5 +1,6 @@
 package lab_final_dolcey_wilson;
 
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Diccionario extends javax.swing.JFrame {
@@ -19,7 +20,6 @@ public class Diccionario extends javax.swing.JFrame {
         "professional", "quit", "blue", "taste",
         "achieve", "avoid", "distractions", "factors",
         "dark", "goals", "", "", "", "", "", "", "", "", "", ""};
-    
 
     public static String p_español[] = {"consejo", "carrera", "desafío", "experiencia",
         "contratar", "ideal", "entrevista", "gerente",
@@ -39,7 +39,19 @@ public class Diccionario extends javax.swing.JFrame {
 
     public String cadena;
 
+    public int lim = 100;
+
     public Diccionario() {
+        try {
+            String limite="";
+            limite = JOptionPane.showInputDialog(null, "Escriba el limite de palabras (Mayor o igual que 100)", "Cambio de limite", JOptionPane.QUESTION_MESSAGE);
+            if (!limite.isEmpty()) {
+                lim = Integer.parseInt(limite);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico", "Error", JOptionPane.ABORT);
+        }
         initComponents();
     }
 
