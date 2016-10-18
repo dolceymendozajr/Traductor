@@ -1,7 +1,7 @@
 # Laboratorio Final
 
 ## DICCIONARIO
-Debe poder traducir de inglés/español y de español/inglés, teniendo en cuenta lo
+Debe poder traducir de *inglés/español* y de *español/inglés*, teniendo en cuenta lo
 siguiente:
 
 1. Crear **dos arrays unidimensionales** de String para a almacenar máximo 100
