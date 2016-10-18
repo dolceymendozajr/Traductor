@@ -211,12 +211,12 @@ public class Diccionario extends javax.swing.JFrame {
         try {
             cadena = txtarea_trad1.getText();
             String[] arreglo = cadena.split(",");
-            if ("INGLES".equals(lbl_i1.getText())) {
+            
+            if (lbl_i1.getText().equalsIgnoreCase("INGLES"))
                 txtarea_trad2.setText(traduce_to_Español(arreglo));
-            }
-            if ("ESPAÑOL".equals(lbl_i1.getText())) {
+            if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL"))
                 txtarea_trad2.setText(traduce_to_Ingles(arreglo));
-            }
+                
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al digitar los textos a traducir", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -297,15 +297,14 @@ public class Diccionario extends javax.swing.JFrame {
 
     String traduce_to_Español(String[] ing) {
         String trad = "";
-        for (int i = 0; i < ing.length; i++) {
+        for (String ing1 : ing) {
             for (int j = 0; j < p_ingles.length; j++) {
-                if (ing[i].equalsIgnoreCase(p_ingles[j])) {
+                if (ing1.equalsIgnoreCase(p_ingles[j])) {
                     if (!trad.isEmpty()) {
-                        trad = trad + "," + p_español[j];
+                        trad = trad + ", " + p_español[j];
                     } else {
                         trad = p_español[j];
                     }
-
                 }
             }
         }
@@ -314,11 +313,11 @@ public class Diccionario extends javax.swing.JFrame {
 
     String traduce_to_Ingles(String[] esp) {
         String trad = "";
-        for (int i = 0; i < esp.length; i++) {
+        for (String esp1 : esp) {
             for (int j = 0; j < 10; j++) {
-                if (esp[i].equalsIgnoreCase(p_español[j])) {
+                if (esp1.equalsIgnoreCase(p_español[j])) {
                     if (!trad.isEmpty()) {
-                        trad = trad + "," + p_ingles[j];
+                        trad = trad + ", " + p_ingles[j];
                     } else {
                         trad = p_ingles[j];
                     }
