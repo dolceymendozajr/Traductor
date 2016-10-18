@@ -216,6 +216,9 @@ public class Diccionario extends javax.swing.JFrame {
                 txtarea_trad2.setText(traduce_to_Español(arreglo));
             if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL"))
                 txtarea_trad2.setText(traduce_to_Ingles(arreglo));
+            
+            System.out.println("IDIOMA TXT1: " + txtarea_trad1.getText());
+            System.out.println("IDIOMA TXT2: " + txtarea_trad2.getText());
                 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al digitar los textos a traducir", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -314,7 +317,7 @@ public class Diccionario extends javax.swing.JFrame {
     String traduce_to_Ingles(String[] esp) {
         String trad = "";
         for (String esp1 : esp) {
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j < p_español.length; j++) {
                 if (esp1.equalsIgnoreCase(p_español[j])) {
                     if (!trad.isEmpty()) {
                         trad = trad + ", " + p_ingles[j];
