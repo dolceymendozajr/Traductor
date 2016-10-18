@@ -1,6 +1,5 @@
 package lab_final_dolcey_wilson;
 
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Diccionario extends javax.swing.JFrame {
