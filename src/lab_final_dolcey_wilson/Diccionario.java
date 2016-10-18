@@ -216,25 +216,19 @@ public class Diccionario extends javax.swing.JFrame {
                 txtarea_trad2.setText(traduce_to_Español(arreglo));
             if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL"))
                 txtarea_trad2.setText(traduce_to_Ingles(arreglo));
-            
-            System.out.println("IDIOMA TXT1: " + txtarea_trad1.getText());
-            System.out.println("IDIOMA TXT2: " + txtarea_trad2.getText());
-                
+                            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al digitar los textos a traducir", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }                                         
 
     private void btn_changeActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        String temp_txtarea, temp_lbl;
+        String temp_lbl;
 
         temp_lbl = lbl_i1.getText();
         lbl_i1.setText(lbl_i2.getText());
         lbl_i2.setText(temp_lbl);
 
-        temp_txtarea = txtarea_trad1.getText();
-        txtarea_trad1.setText(txtarea_trad2.getText());
-        txtarea_trad2.setText(temp_txtarea);
     }                                          
 
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {                                           
