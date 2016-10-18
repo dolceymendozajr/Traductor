@@ -207,6 +207,7 @@ public class Diccionario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
+//    AL PRESIONAR EL BOTON TRADUCIR
     private void btn_transActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             cadena = txtarea_trad1.getText();
@@ -224,6 +225,7 @@ public class Diccionario extends javax.swing.JFrame {
         }
     }
 
+//    AL PRESIONAR EL BOTON DE CAMBIAR
     private void btn_changeActionPerformed(java.awt.event.ActionEvent evt) {
         String temp_lbl;
 
@@ -233,6 +235,7 @@ public class Diccionario extends javax.swing.JFrame {
 
     }
 
+//    AL PRESIONAR EL BOTON INSERTAR
     private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {
         boolean sw = true;
         int n = 0;
@@ -259,6 +262,7 @@ public class Diccionario extends javax.swing.JFrame {
 
     }
 
+//    SUBRUTINA INSERTAR PALABRAS
     void InsertarPalabra(int n) {
         String tempp = "";
         boolean sw = false;
@@ -317,6 +321,7 @@ public class Diccionario extends javax.swing.JFrame {
         });
     }
 
+//    FUNCION TRADUCIR A ESPAÑOL
     String traduce_to_Español(String[] ing) {
         String trad = "";
         for (String ing1 : ing) {
@@ -333,6 +338,7 @@ public class Diccionario extends javax.swing.JFrame {
         return trad;
     }
 
+//    FUNCION TRADUCIR A INGLES
     String traduce_to_Ingles(String[] esp) {
         String trad = "";
         for (String esp1 : esp) {
