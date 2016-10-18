@@ -4,7 +4,7 @@
 Debe poder traducir de inglés/español y de español/inglés, teniendo en cuenta lo
 siguiente:
 
-1. Crear dos arrays unidimensionales de String para a almacenar máximo 100
+1. Crear **dos arrays unidimensionales** de String para a almacenar máximo 100
 palabras.
 2. Crear un método (subrutina) para añadir una entrada al diccionario
 3. Crear String traduce_to_Ingles(String e) y String traduce_to_Español(String
@@ -19,7 +19,7 @@ defecto de capacidad del diccionario o bien establecer mediante teclado dicho
 límite.
 7. El usuario debe poder introducir varias palabras separadas por comas y el
 programa debe traducir todas ellas.
-8. Opcional: En caso de que el usuario indique que quiere traducir una palabra
+8. **Opcional:** En caso de que el usuario indique que quiere traducir una palabra
 XXX y dicha palabra no tenga traducción, el programa deberá mostrarle un
 mensaje del tipo "Usted quiso decir XXY" donde XXY es una palabra de la
 misma longitud que XXX y con una única letras diferente, en caso de exista una
