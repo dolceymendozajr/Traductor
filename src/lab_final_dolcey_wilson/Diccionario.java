@@ -58,15 +58,14 @@ public class Diccionario extends javax.swing.JFrame {
                 limite = JOptionPane.showInputDialog(null, "Escriba el limite de palabras (Mayor o igual que 100)", "Cambio de limite", JOptionPane.QUESTION_MESSAGE);
                 if ((limite != null) && (!limite.isEmpty())) {
                     lim = Integer.parseInt(limite);
-                    if (lim < 100) {
-                        JOptionPane.showMessageDialog(null, "Debe ingresar un valor mayor que 100");
+                    if (lim < 100 || lim > 1000) {
+                        JOptionPane.showMessageDialog(null, "Debe ingresar un valor mayor que 100 & menor que 1000");
                         continue;
                     }
                     sw = false;
                 }
-                if (limite == null) {
+                if (limite == null)
                     sw = false;
-                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor entero");
             }
@@ -239,7 +238,7 @@ public class Diccionario extends javax.swing.JFrame {
                 String entrada = JOptionPane.showInputDialog(null, "Numero de palabras: ", "Numero palabras", JOptionPane.QUESTION_MESSAGE);
                 if ((entrada != null) && (!entrada.isEmpty())) {
                     n = Integer.parseInt(entrada);
-                    if (n < 0) {
+                    if ((n <= 0) || (n > lim)) {
                         JOptionPane.showMessageDialog(null, "Debe ingresar un valor mayor que 0");
                         continue;
                     }
@@ -258,9 +257,13 @@ public class Diccionario extends javax.swing.JFrame {
                 p_ingles[i] = JOptionPane.showInputDialog(null, "Palabra en ingles:", "Ingresar palabra", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-    }                                          
+    }
+    
+    void InsertarPalabra(int n) {
+        
+    }
 
-    public static void main(String args[]) {
+    static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
