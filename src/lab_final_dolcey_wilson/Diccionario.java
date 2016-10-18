@@ -299,7 +299,7 @@ public class Diccionario extends javax.swing.JFrame {
         String trad = "";
         for (int i = 0; i < ing.length; i++) {
             for (int j = 0; j < p_ingles.length; j++) {
-                if (ing[i].equals(p_ingles[j])) {
+                if (ing[i].equalsIgnoreCase(p_ingles[j])) {
                     if (!trad.isEmpty()) {
                         trad = trad + "," + p_español[j];
                     } else {
@@ -316,7 +316,7 @@ public class Diccionario extends javax.swing.JFrame {
         String trad = "";
         for (int i = 0; i < esp.length; i++) {
             for (int j = 0; j < 10; j++) {
-                if (esp[i].equals(p_español[j])) {
+                if (esp[i].equalsIgnoreCase(p_español[j])) {
                     if (!trad.isEmpty()) {
                         trad = trad + "," + p_ingles[j];
                     } else {
