@@ -1,12 +1,13 @@
 package lab_final_dolcey_wilson;
-// a
 
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Diccionario extends javax.swing.JFrame {
 
-    public static String p_ingles[] = {"advice", "career", "challenge", "experience",
+    public static String p_ingles[] = new String[1000];
+
+    public static String default_ingles[] = {"advice", "career", "challenge", "experience",
         "hire", "ideal", "interview", "manager",
         "long", "reward", "salary", "red",
         "skill", "tall", "happy", "create",
@@ -20,9 +21,11 @@ public class Diccionario extends javax.swing.JFrame {
         "flavor", "generation", "income",
         "professional", "quit", "blue", "taste",
         "achieve", "avoid", "distractions", "factors",
-        "dark", "goals", "", "", "", "", "", "", "", "", "", ""};
+        "dark", "goals"};
 
-    public static String p_español[] = {"consejo", "carrera", "desafío", "experiencia",
+    public static String p_español[] = new String[1000];
+
+    public static String default_español[] = {"consejo", "carrera", "desafío", "experiencia",
         "contratar", "ideal", "entrevista", "gerente",
         "largo", "recompensa", "sueldo", "rojo",
         "habilidad", "alto", "feliz", "crear",
@@ -36,19 +39,23 @@ public class Diccionario extends javax.swing.JFrame {
         "sabor", "generación", "ingresos",
         "profesional", "salir", "azúl", "gusto",
         "lograr", "evitar", "distracciones", "factores",
-        "oscuro", "objetivos", "", "", "", "", "", "", "", "", "", ""};
+        "oscuro", "objetivos"};
 
     public String cadena;
+    public int lim = 0;
+    public final int p_lim = 100;
 
-    public int lim = 100;
-
+//    CONSTRUCTOR
     public Diccionario() {
+        for (int i = 0; i < default_ingles.length; i++) {
+            p_ingles[i] = default_ingles[i];
+            p_español[i] = default_español[i];
+        }
         boolean sw = true;
-
+        lim = p_lim;
         while (sw) {
             try {
                 String limite = "";
-
                 limite = JOptionPane.showInputDialog(null, "Escriba el limite de palabras (Mayor o igual que 100)", "Cambio de limite", JOptionPane.QUESTION_MESSAGE);
                 if ((limite != null) && (!limite.isEmpty())) {
                     lim = Integer.parseInt(limite);
@@ -58,18 +65,18 @@ public class Diccionario extends javax.swing.JFrame {
                     }
                     sw = false;
                 }
-                if (limite==null)
+                if (limite == null) {
                     sw = false;
+                }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico!");
+                JOptionPane.showMessageDialog(null, "Debe ingresar un valor entero");
             }
         }
-
         initComponents();
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -82,6 +89,7 @@ public class Diccionario extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 3), new java.awt.Dimension(0, 3), new java.awt.Dimension(32767, 3));
         btn_trans = new javax.swing.JButton();
         btn_change = new javax.swing.JButton();
+        btn_insert = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Diccionario");
@@ -129,6 +137,14 @@ public class Diccionario extends javax.swing.JFrame {
             }
         });
 
+        btn_insert.setFont(new java.awt.Font("HP Simplified Light", 0, 12)); // NOI18N
+        btn_insert.setText("Insertar palabras");
+        btn_insert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_insertActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,7 +166,9 @@ public class Diccionario extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_insert)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,10 +177,15 @@ public class Diccionario extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_insert)))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -183,27 +206,24 @@ public class Diccionario extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btn_transActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transActionPerformed
+    private void btn_transActionPerformed(java.awt.event.ActionEvent evt) {                                          
         try {
             cadena = txtarea_trad1.getText();
             String[] arreglo = cadena.split(",");
-            
-            for (int i = 0; i < arreglo.length; i++)
-                JOptionPane.showMessageDialog(null, arreglo[i], "ARREGLO " + i, JOptionPane.INFORMATION_MESSAGE);
-            
-            if (lbl_i1.getText().equals("INGLES"))
+            if ("INGLES".equals(lbl_i1.getText())) {
                 txtarea_trad2.setText(traduce_to_Español(arreglo));
-            if (lbl_i1.getText().equals("ESPAÑOL"))
+            }
+            if ("ESPAÑOL".equals(lbl_i1.getText())) {
                 txtarea_trad2.setText(traduce_to_Ingles(arreglo));
-
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al digitar los textos a traducir", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btn_transActionPerformed
+    }                                         
 
-    private void btn_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeActionPerformed
+    private void btn_changeActionPerformed(java.awt.event.ActionEvent evt) {                                           
         String temp_txtarea, temp_lbl;
 
         temp_lbl = lbl_i1.getText();
@@ -213,7 +233,36 @@ public class Diccionario extends javax.swing.JFrame {
         temp_txtarea = txtarea_trad1.getText();
         txtarea_trad1.setText(txtarea_trad2.getText());
         txtarea_trad2.setText(temp_txtarea);
-    }//GEN-LAST:event_btn_changeActionPerformed
+    }                                          
+
+    private void btn_insertActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        boolean sw = true;
+        int n = 0;
+        while (sw) {
+            try {
+                String entrada = JOptionPane.showInputDialog(null, "Numero de palabras: ", "Numero palabras", JOptionPane.QUESTION_MESSAGE);
+                if ((entrada != null) && (!entrada.isEmpty())) {
+                    n = Integer.parseInt(entrada);
+                    if (n < 0) {
+                        JOptionPane.showMessageDialog(null, "Debe ingresar un valor mayor que 0");
+                        continue;
+                    }
+                    sw = false;
+                }
+                if (entrada == null) {
+                    sw = false;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico");
+            }
+        }
+        System.out.println(p_ingles.length);
+        if (n != 0) {
+            for (int i = default_ingles.length; i < (default_ingles.length + n); i++) {
+                p_ingles[i] = JOptionPane.showInputDialog(null, "Palabra en ingles:", "Ingresar palabra", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }                                          
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -251,38 +300,42 @@ public class Diccionario extends javax.swing.JFrame {
 
     }
 
-    public static String traduce_to_Español(String[] ing) {
+    String traduce_to_Español(String[] ing) {
         String trad = "";
         for (int i = 0; i < ing.length; i++) {
             for (int j = 0; j < p_ingles.length; j++) {
                 if (ing[i].equals(p_ingles[j])) {
-                    if (!trad.isEmpty())
-                        trad = trad + ", " + p_español[j];
-                    else
+                    if (!trad.isEmpty()) {
+                        trad = trad + "," + p_español[j];
+                    } else {
                         trad = p_español[j];
+                    }
+
                 }
             }
         }
         return trad;
     }
 
-    public static String traduce_to_Ingles(String[] esp) {
+    String traduce_to_Ingles(String[] esp) {
         String trad = "";
         for (int i = 0; i < esp.length; i++) {
             for (int j = 0; j < 10; j++) {
                 if (esp[i].equals(p_español[j])) {
-                    if (!trad.isEmpty())
-                        trad = trad + ", " + p_ingles[j];
-                    else
+                    if (!trad.isEmpty()) {
+                        trad = trad + "," + p_ingles[j];
+                    } else {
                         trad = p_ingles[j];
+                    }
                 }
             }
         }
         return trad;
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btn_change;
+    private javax.swing.JButton btn_insert;
     private javax.swing.JButton btn_trans;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
@@ -292,5 +345,5 @@ public class Diccionario extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_i2;
     private javax.swing.JTextArea txtarea_trad1;
     private javax.swing.JTextArea txtarea_trad2;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
