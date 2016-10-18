@@ -295,10 +295,6 @@ public class Diccionario extends javax.swing.JFrame {
         });
     }
 
-    static void InsertarPalabras() {
-
-    }
-
     String traduce_to_Español(String[] ing) {
         String trad = "";
         for (int i = 0; i < ing.length; i++) {
