@@ -4,8 +4,6 @@ import javax.swing.JOptionPane;
 
 public class Diccionario extends javax.swing.JFrame {
 
-    public static String p_ingles[] = new String[1000];
-
     public static String default_ingles[] = {"advice", "career", "challenge", "experience",
         "hire", "ideal", "interview", "manager",
         "long", "reward", "salary", "red",
@@ -21,9 +19,6 @@ public class Diccionario extends javax.swing.JFrame {
         "professional", "quit", "blue", "taste",
         "achieve", "avoid", "distractions", "factors",
         "dark", "goals"};
-
-    public static String p_español[] = new String[1000];
-
     public static String default_español[] = {"consejo", "carrera", "desafío", "experiencia",
         "contratar", "ideal", "entrevista", "gerente",
         "largo", "recompensa", "sueldo", "rojo",
@@ -39,7 +34,9 @@ public class Diccionario extends javax.swing.JFrame {
         "profesional", "salir", "azúl", "gusto",
         "lograr", "evitar", "distracciones", "factores",
         "oscuro", "objetivos"};
-
+    
+    public static String p_ingles[] = new String[1000];
+    public static String p_español[] = new String[1000];
     public String cadena;
     public int lim = 0;
     public final int p_lim = 100;
