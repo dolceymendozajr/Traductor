@@ -2,7 +2,6 @@ package lab_final_dolcey_wilson;
 import javax.swing.JOptionPane;
 
 public class Diccionario extends javax.swing.JFrame {
-
     public static String default_ingles[] = {"advice", "career", "challenge", "experience",
         "hire", "ideal", "interview", "manager",
         "long", "reward", "salary", "red",
@@ -43,8 +42,7 @@ public class Diccionario extends javax.swing.JFrame {
 //    CONSTRUCTOR
     public Diccionario() {
         for (int i = 0; i < default_ingles.length; i++) {
-            p_ingles[i] = default_ingles[i];
-            p_español[i] = default_español[i];
+            p_ingles[i] = default_ingles[i]; p_español[i] = default_español[i];
         }
         boolean sw = true;
         lim = p_lim;
@@ -60,8 +58,7 @@ public class Diccionario extends javax.swing.JFrame {
                     }
                     sw = false;
                 }
-                if (limite == null)
-                    sw = false;
+                if (limite == null) sw = false;
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor entero");
             }
@@ -242,9 +239,7 @@ public class Diccionario extends javax.swing.JFrame {
                     }
                     sw = false;
                 }
-                if (entrada == null)
-                    sw = false;
-                
+                if (entrada == null) sw = false;            
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico");
             }
@@ -261,8 +256,7 @@ public class Diccionario extends javax.swing.JFrame {
         boolean sw_while = true;
         int i = default_ingles.length;
         
-        while (i < (default_ingles.length + n) && sw_while == true) {
-            
+        while (i < (default_ingles.length + n) && sw_while == true) {   
             tempp = JOptionPane.showInputDialog(null, "Palabra en ingles:", "Ingresar palabra " + i, JOptionPane.INFORMATION_MESSAGE);
             for (int j = 0; j < p_ingles.length; j++) {
                 if (tempp.equalsIgnoreCase(p_ingles[j])) {
@@ -319,10 +313,8 @@ public class Diccionario extends javax.swing.JFrame {
         for (String ing1 : ing) {
             for (int j = 0; j < p_ingles.length; j++) {
                 if (ing1.equalsIgnoreCase(p_ingles[j])) {
-                    if (!trad.isEmpty())
-                        trad = trad + ", " + p_español[j];
-                    else
-                        trad = p_español[j];       
+                    if (!trad.isEmpty()) trad = trad + ", " + p_español[j];
+                    else trad = p_español[j];       
                 }
             }
         }
@@ -335,10 +327,8 @@ public class Diccionario extends javax.swing.JFrame {
         for (String esp1 : esp) {
             for (int j = 0; j < p_español.length; j++) {
                 if (esp1.equalsIgnoreCase(p_español[j])) {
-                    if (!trad.isEmpty())
-                        trad = trad + ", " + p_ingles[j];
-                    else
-                        trad = p_ingles[j];
+                    if (!trad.isEmpty()) trad = trad + ", " + p_ingles[j];
+                    else trad = p_ingles[j];
                 }
             }
         }
