@@ -1,5 +1,4 @@
 package lab_final_dolcey_wilson;
-
 import javax.swing.JOptionPane;
 
 public class Diccionario extends javax.swing.JFrame {
@@ -61,9 +60,8 @@ public class Diccionario extends javax.swing.JFrame {
                     }
                     sw = false;
                 }
-                if (limite == null) {
+                if (limite == null)
                     sw = false;
-                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor entero");
             }
@@ -210,12 +208,10 @@ public class Diccionario extends javax.swing.JFrame {
             cadena = txtarea_trad1.getText();
             String[] arreglo = cadena.split(",");
 
-            if (lbl_i1.getText().equalsIgnoreCase("INGLES")) {
+            if (lbl_i1.getText().equalsIgnoreCase("INGLES"))
                 txtarea_trad2.setText(traduce_to_Español(arreglo));
-            }
-            if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL")) {
+            if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL"))
                 txtarea_trad2.setText(traduce_to_Ingles(arreglo));
-            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al digitar los textos a traducir", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -229,7 +225,6 @@ public class Diccionario extends javax.swing.JFrame {
         temp_lbl = lbl_i1.getText();
         lbl_i1.setText(lbl_i2.getText());
         lbl_i2.setText(temp_lbl);
-
     }
 
 //    AL PRESIONAR EL BOTON INSERTAR
@@ -247,9 +242,9 @@ public class Diccionario extends javax.swing.JFrame {
                     }
                     sw = false;
                 }
-                if (entrada == null) {
+                if (entrada == null)
                     sw = false;
-                }
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico");
             }
@@ -324,11 +319,10 @@ public class Diccionario extends javax.swing.JFrame {
         for (String ing1 : ing) {
             for (int j = 0; j < p_ingles.length; j++) {
                 if (ing1.equalsIgnoreCase(p_ingles[j])) {
-                    if (!trad.isEmpty()) {
+                    if (!trad.isEmpty())
                         trad = trad + ", " + p_español[j];
-                    } else {
-                        trad = p_español[j];
-                    }
+                    else
+                        trad = p_español[j];       
                 }
             }
         }
@@ -341,11 +335,10 @@ public class Diccionario extends javax.swing.JFrame {
         for (String esp1 : esp) {
             for (int j = 0; j < p_español.length; j++) {
                 if (esp1.equalsIgnoreCase(p_español[j])) {
-                    if (!trad.isEmpty()) {
+                    if (!trad.isEmpty())
                         trad = trad + ", " + p_ingles[j];
-                    } else {
+                    else
                         trad = p_ingles[j];
-                    }
                 }
             }
         }
