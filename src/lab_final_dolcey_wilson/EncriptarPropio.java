@@ -182,8 +182,9 @@ class MetodoEncript {
                     if (frase.substring(i, i + 1).equalsIgnoreCase(letras[j][k])) {
                         if (clave % 2 != 0) {
                             cod = cod + (j + prt2) + prt1 + letras[0][k]; cod = cod + "%%";
-                        } else
+                        } else { 
                             cod = cod + (j + prt1) + prt2 + letras[0][k]; cod = cod + "%";
+                        }  
                     }
                 }
             }
