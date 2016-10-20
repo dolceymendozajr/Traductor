@@ -87,18 +87,19 @@ public class EncriptarPropio extends javax.swing.JFrame {
                 try {
                     String cla = txt_Clave.getText();
                     clave = Integer.parseInt(cla);
-                    if (clave <= 99 || clave >= 900) {
-                        txt_ERROR.setText("La clave debe ser mayor que 99 y menor que 900");
+                    if (clave <= 99 || clave >= 800) {
+                        txt_ERROR.setText("La clave debe ser mayor que 99 y menor que 800");
+                    } else {
+                        try {
+                        String frase = txt_Mensaje.getText();
+                        String encriptado = encripaa.encrip(frase, clave);
+
+                        txt_Encriptado.setText(encriptado);
+                        } catch (Exception e) {
+                        }
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(rootPane, "La clave solo puede ser números :)", "ERROR", JOptionPane.ERROR_MESSAGE);
-                }
-                try {
-                    String frase = txt_Mensaje.getText();
-                    String encriptado = encripaa.encrip(frase, clave);
-                    
-                    txt_Encriptado.setText(encriptado);
-                } catch (Exception e) {
                 }
             } else
                 JOptionPane.showMessageDialog(rootPane, "No puedes dejar un campo vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -195,10 +196,11 @@ class MetodoEncript {
                 for (int k = 1; k <= 4; k++) {
                     // CONVIERTE CADA LETRA (Y ESPACIOS) EN SU CÓDIGO CORRESPONDIENTE
                     if (frase.substring(i, i + 1).equalsIgnoreCase(letras[j][k])) {
-                        if (clave % 2 != 0)
-                            cod = cod + (j + prt2) + prt1 + letras[0][k];
-                        else
-                            cod = cod + (j + prt1) + prt2 + letras[0][k];
+                        if (clave % 2 != 0) {
+                            cod = cod + (j + prt2) + prt1 + letras[0][k]; cod = cod + "%%";
+                        } else {
+                            cod = cod + (j + prt1) + prt2 + letras[0][k]; cod = cod + "%";
+                        }  
                     }
                     
                 }
