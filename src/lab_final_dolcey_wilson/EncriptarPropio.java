@@ -178,7 +178,7 @@ class MetodoEncript {
         for (int i = 0; i < frase.length(); i++) {
             for (int j = 1; j <= 7; j++) {
                 for (int k = 1; k <= 4; k++) {
-                    // CONVIERTE CADA LETRA (Y ESPACIOS) EN SU CÓDIGO CORRESPONDIENTE
+                    // CONVIERTE CADA LETRA (Y ESPACIOS) EN SU CÓDIGO CORRESPONDIENTE :)
                     if (frase.substring(i, i + 1).equalsIgnoreCase(letras[j][k])) {
                         if (clave % 2 != 0) {
                             cod = cod + (j + prt2) + prt1 + letras[0][k]; cod = cod + "//";
