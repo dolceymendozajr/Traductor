@@ -2,6 +2,7 @@ package lab_final_dolcey_wilson;
 import javax.swing.JOptionPane;
 
 public class Diccionario extends javax.swing.JFrame {
+    static EncriptarPropio Encriptar = new EncriptarPropio(); //
     public static String default_ingles[] = {"advice", "career", "challenge", "experience",
         "hire", "ideal", "interview", "manager",
         "long", "reward", "salary", "red",
@@ -41,6 +42,7 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    CONSTRUCTOR
     public Diccionario() {
+        Encriptar.setVisible(true);
         for (int i = 0; i < default_ingles.length; i++) {
             p_ingles[i] = default_ingles[i]; p_español[i] = default_español[i];
         }
