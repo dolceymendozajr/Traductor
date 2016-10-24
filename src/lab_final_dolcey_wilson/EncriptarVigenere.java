@@ -94,8 +94,8 @@ public class EncriptarVigenere {
             } while (sw && j < 27);
             
             j = 0;
-            do { // BUSCAR Xi ->  CLAVE
-                System.out.println(pal1[i]);
+            sw = true;
+            do { // BUSCAR Xi ->  FRASE
                 if (Character.toString(dicc[j]).equalsIgnoreCase(Character.toString(pal1[i]))) {
                     xi = j;
                     sw = false;
@@ -103,13 +103,13 @@ public class EncriptarVigenere {
                     j++;
             } while (sw && j < 27);
             
-            System.out.println("Ci: " + ci + " / Xi: " + xi);
+//            System.out.println("Ci: " + ci + " / Xi: " + xi);
             if (xi - ci >= 0) {
-                int a = (ci - xi) % 27;
+                int a = (xi - ci) % 27;
                 desencriptado = desencriptado + dicc[a];
 //                System.out.println("A: " + a);
             } else if (xi - ci < 0) {
-                int b = (ci - xi + 27) % 27;
+                int b = (xi - ci + 27) % 27;
                 desencriptado = desencriptado + dicc[b];
 //                System.out.println("B: " + b);
             }
