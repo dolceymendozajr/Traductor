@@ -1,10 +1,12 @@
 package lab_final_dolcey_wilson;
-import java.util.Scanner;
+
 import javax.swing.JOptionPane;
 
 public class Cifrador extends javax.swing.JFrame {
+
     MetodoEncript encripaa = new MetodoEncript();
     EncriptarVigenere vigenere_metodo = new EncriptarVigenere();
+    
     public Cifrador() {
         initComponents();
     }
@@ -164,10 +166,12 @@ public class Cifrador extends javax.swing.JFrame {
 
     private void btn_EncriptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EncriptarActionPerformed
         txt_ERROR.setText("");
-        int clave = 123;
-        
+        int clave;
+
         try {
-           if (op_EncripPropio.isSelected()) {
+            if (txt_Clave.getText().isEmpty() && txt_Mensaje.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "No puedes dejar un campo vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else if (op_EncripPropio.isSelected()) { // ENCRIPTADO PROPIO
                 try {
                     if (!txt_Clave.getText().isEmpty() && !txt_Mensaje.getText().isEmpty()) {
                         try {
@@ -177,34 +181,30 @@ public class Cifrador extends javax.swing.JFrame {
                                 try {
                                     String frase = txt_Mensaje.getText();
                                     String encriptado = MetodoEncript.encrip(frase, clave); // INVOCAR A FUNCIÓN "encrip" DE LA CLASE "MetodoEncript" PARA ENCRIPTAR LA FRASE
-                                    txt_Encriptado.setText(encriptado); // MOSTRAR TEXTO ENCRIPTADO
+                                    txt_Encriptado.setText(encriptado); // MOSTRAR TEXTO ENCRIPTADO 
                                 } catch (Exception e) { txt_ERROR.setText("Hubo un error desconocido, inténtalo con otra clave o más tarde"); }
-                            } else txt_ERROR.setText("La clave debe ser mayor que 99 y menor que 800");
-                        } catch (Exception e) { JOptionPane.showMessageDialog(rootPane, "La clave solo puede ser números enteros :)", "ERROR", JOptionPane.ERROR_MESSAGE); }
-                    } else
-                        JOptionPane.showMessageDialog(rootPane, "No puedes dejar un campo vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
-                } catch (Exception e) {}
-            } else if (op_EncripVigenere.isSelected()) {
+                            } else
+                                txt_ERROR.setText("La clave debe ser mayor que 99 y menor que 800");
+                        } catch (Exception e) {}
+                    }
+                } catch (Exception e) { }
+            } else if (op_EncripVigenere.isSelected()) { // ENCRIPTADO POR VIGENERE
                 try {
-                   if (!txt_Clave.getText().isEmpty() && !txt_Mensaje.getText().isEmpty()) {
-                       try {
-                           try {
-                               String cla = txt_Clave.getText();
-                               String message = txt_Mensaje.getText();
-                               
-                               txt_Encriptado.setText(vigenere_metodo.Encript(message, cla));
-                           } catch (Exception e) { txt_ERROR.setText("Hubo un error desconocido, inténtalo con otra clave o más tarde"); }
-                       } catch (Exception e) { JOptionPane.showMessageDialog(rootPane, "La clave solo puede ser letras :)", "ERROR", JOptionPane.ERROR_MESSAGE); }
-                   } else
-                       JOptionPane.showMessageDialog(rootPane, "No puedes dejar un campo vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
-               } catch (Exception e) {
-               }
+                    if (!txt_Clave.getText().isEmpty() && !txt_Mensaje.getText().isEmpty()) {
+                        try {
+                            try {
+                                String cla = txt_Clave.getText();
+                                String message = txt_Mensaje.getText();
+
+                                txt_Encriptado.setText(vigenere_metodo.Encript(message, cla));                                        
+                            } catch (Exception e) { txt_ERROR.setText("Hubo un error desconocido, inténtalo con otra clave o más tarde"); }
+                        } catch (Exception e) {  }
+                    }
+                } catch (Exception e) {}
             } else
                 JOptionPane.showMessageDialog(rootPane, "Debe seleccionar una opción de cifrado :)", "ERROR", JOptionPane.ERROR_MESSAGE);
+
         } catch (Exception e) {}
-        
-        
-        
     }//GEN-LAST:event_btn_EncriptarActionPerformed
 
     private void txt_EncriptadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_EncriptadoActionPerformed
@@ -220,13 +220,15 @@ public class Cifrador extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_ClaveActionPerformed
 
     private void Vigenere_op(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Vigenere_op
-        if (op_EncripPropio.isSelected())
+        if (op_EncripPropio.isSelected()) {
             op_EncripPropio.setSelected(false);
+        }
     }//GEN-LAST:event_Vigenere_op
 
     private void Propio_op(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Propio_op
-        if (op_EncripVigenere.isSelected())
+        if (op_EncripVigenere.isSelected()) {
             op_EncripVigenere.setSelected(false);
+        }
     }//GEN-LAST:event_Propio_op
 
     /**
@@ -266,7 +268,7 @@ public class Cifrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Encriptar;
+    public static javax.swing.JButton btn_Encriptar;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -281,52 +283,52 @@ public class Cifrador extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 }
 
-class MetodoEncript {
-    static Scanner sc = new Scanner(System.in);
-    static String letras[][] = {{"0", "A", "B", "C", "D"},
-                                {"1", "A", "B", "C", "D"},
-                                {"2", "E", "F", "G", "H"},
-                                {"3", "I", "J", "K", "L"},
-                                {"4", "M", "N", "Ñ", "O"},
-                                {"5", "P", "Q", "R", "S"},
-                                {"6", "T", "U", "V", "W"},
-                                {"7", "X", "Y", "Z", " "}
-        }; // DICCIONARIO DE CONVERSIÓN
-    
-    public static void main(String[] args) {
-        //clave -> clave para encriptar
-        System.out.print("ESCRIBA PALABRA: "); String frase = sc.nextLine();
-        System.out.print("CLAVE: "); int clave = sc.nextInt();
-
-        while ((clave <= 99) || (clave > 900)) { System.out.println("CLAVE DEBE TENER 3 DÍGITOS Y DEBE SER MENOR QUE 900: "); clave = sc.nextInt(); }
-        
-        System.out.println(""); System.out.println("..."); System.out.println("");
-        System.out.println("CODIGO GENERADO: " + encrip(frase, clave));
-    }
-    
-    // FUNCIÓN PARA ENCRIPTRAR
-    public static String encrip(String frase, int clave) {
-        String str_clave =  clave + "";
-        int prt1, prt2;
-        prt1 = Integer.parseInt(str_clave.substring(0, 2));
-        prt2 = Integer.parseInt(str_clave.substring(2, 3));
-        String cod = "";
-        
-        for (int i = 0; i < frase.length(); i++) {
-            for (int j = 1; j <= 7; j++) {
-                for (int k = 1; k <= 4; k++) {
-                    // CONVIERTE CADA LETRA (Y ESPACIOS) EN SU CÓDIGO CORRESPONDIENTE :)
-                    if (frase.substring(i, i + 1).equalsIgnoreCase(letras[j][k])) {
-                        if (clave % 2 != 0) {
-                            cod = cod + (j + prt2) + prt1 + letras[0][k]; cod = cod + "//";
-                        } else { 
-                            cod = cod + (j + prt1) + prt2 + letras[0][k]; cod = cod + "\\";
-                        }  
-                    }
-                }
-            }
-        }
-        
-        return cod;
-    }
-}
+//class MetodoEncript {
+//    static Scanner sc = new Scanner(System.in);
+//    static String letras[][] = {{"0", "A", "B", "C", "D"},
+//                                {"1", "A", "B", "C", "D"},
+//                                {"2", "E", "F", "G", "H"},
+//                                {"3", "I", "J", "K", "L"},
+//                                {"4", "M", "N", "Ñ", "O"},
+//                                {"5", "P", "Q", "R", "S"},
+//                                {"6", "T", "U", "V", "W"},
+//                                {"7", "X", "Y", "Z", " "}
+//        }; // DICCIONARIO DE CONVERSIÓN
+//    
+//    public static void main(String[] args) {
+//        //clave -> clave para encriptar
+//        System.out.print("ESCRIBA PALABRA: "); String frase = sc.nextLine();
+//        System.out.print("CLAVE: "); int clave = sc.nextInt();
+//
+//        while ((clave <= 99) || (clave > 900)) { System.out.println("CLAVE DEBE TENER 3 DÍGITOS Y DEBE SER MENOR QUE 900: "); clave = sc.nextInt(); }
+//        
+//        System.out.println(""); System.out.println("..."); System.out.println("");
+//        System.out.println("CODIGO GENERADO: " + encrip(frase, clave));
+//    }
+//    
+//    // FUNCIÓN PARA ENCRIPTRAR
+//    public static String encrip(String frase, int clave) {
+//        String str_clave =  clave + "";
+//        int prt1, prt2;
+//        prt1 = Integer.parseInt(str_clave.substring(0, 2));
+//        prt2 = Integer.parseInt(str_clave.substring(2, 3));
+//        String cod = "";
+//        
+//        for (int i = 0; i < frase.length(); i++) {
+//            for (int j = 1; j <= 7; j++) {
+//                for (int k = 1; k <= 4; k++) {
+//                    // CONVIERTE CADA LETRA (Y ESPACIOS) EN SU CÓDIGO CORRESPONDIENTE :)
+//                    if (frase.substring(i, i + 1).equalsIgnoreCase(letras[j][k])) {
+//                        if (clave % 2 != 0) {
+//                            cod = cod + (j + prt2) + prt1 + letras[0][k]; cod = cod + "//";
+//                        } else { 
+//                            cod = cod + (j + prt1) + prt2 + letras[0][k]; cod = cod + "\\";
+//                        }  
+//                    }
+//                }
+//            }
+//        }
+//        
+//        return cod;
+//    }
+//}

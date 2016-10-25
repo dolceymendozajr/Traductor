@@ -255,9 +255,8 @@ public class Diccionario extends javax.swing.JFrame {
                     }
                     sw = false;
                 }
-                if (entrada == null) {
+                if (entrada == null)
                     sw = false;
-                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico");
             }
@@ -298,11 +297,10 @@ public class Diccionario extends javax.swing.JFrame {
         for (String ing1 : ing) {
             for (int j = 0; j < p_ingles.length; j++) {
                 if (ing1.equalsIgnoreCase(p_ingles[j])) {
-                    if (!trad.isEmpty()) {
+                    if (!trad.isEmpty())
                         trad = trad + ", " + p_español[j];
-                    } else {
+                    else
                         trad = p_español[j];
-                    }
                 }
             }
         }
@@ -315,11 +313,10 @@ public class Diccionario extends javax.swing.JFrame {
         for (String esp1 : esp) {
             for (int j = 0; j < p_español.length; j++) {
                 if (esp1.equalsIgnoreCase(p_español[j])) {
-                    if (!trad.isEmpty()) {
+                    if (!trad.isEmpty())
                         trad = trad + ", " + p_ingles[j];
-                    } else {
+                    else
                         trad = p_ingles[j];
-                    }
                 }
             }
         }
