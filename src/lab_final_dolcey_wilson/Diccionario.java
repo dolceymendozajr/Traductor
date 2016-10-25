@@ -1,9 +1,12 @@
 package lab_final_dolcey_wilson;
 
 import javax.swing.JOptionPane;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Diccionario extends javax.swing.JFrame {
 
+    static EncriptarVigenere Encrip2 = new EncriptarVigenere();
     public static String default_ingles[] = {"advice", "career", "challenge", "experience",
         "hire", "ideal", "interview", "manager",
         "long", "reward", "salary", "red",
@@ -43,6 +46,10 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    CONSTRUCTOR
     public Diccionario() {
+        String a = Encrip2.Encript("hola", "abc");
+        System.out.println("ENCRIPTADO: " + a);
+        String b = Encrip2.Desencript(a, "abc");
+        System.out.println("DESENCRIPTADO: " + b);
         for (int i = 0; i < default_ingles.length; i++) {
             p_ingles[i] = default_ingles[i];
             p_español[i] = default_español[i];
@@ -145,14 +152,14 @@ public class Diccionario extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(234, Short.MAX_VALUE)
+                .addContainerGap(244, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(300, 300, 300))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btn_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(224, 224, 224))))
+                        .addGap(228, 228, 228))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(301, 301, 301))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -176,11 +183,11 @@ public class Diccionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(69, 69, 69)
                 .addComponent(btn_trans)
-                .addContainerGap())
+                .addGap(26, 26, 26))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -195,7 +202,7 @@ public class Diccionario extends javax.swing.JFrame {
                             .addComponent(lbl_i1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(50, Short.MAX_VALUE)))
+                    .addContainerGap(68, Short.MAX_VALUE)))
         );
 
         pack();
@@ -222,6 +229,10 @@ public class Diccionario extends javax.swing.JFrame {
             }
             if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL")) {
                 txtarea_trad2.setText(traduce_to_Ingles(arreglo));
+            }
+            
+            for (int i = 0; i < arreglo.length; i++) {
+                
             }
 
         } catch (Exception e) {
