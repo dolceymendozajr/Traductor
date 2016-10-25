@@ -93,6 +93,7 @@ public class Diccionario extends javax.swing.JFrame {
         btn_change = new javax.swing.JButton();
         btn_trans = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btn_cifrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Diccionario");
@@ -144,6 +145,15 @@ public class Diccionario extends javax.swing.JFrame {
             }
         });
 
+        btn_cifrar.setFont(new java.awt.Font("HP Simplified Light", 1, 12)); // NOI18N
+        btn_cifrar.setText("CIFRAR TRAD.");
+        btn_cifrar.setEnabled(false);
+        btn_cifrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cifrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,11 +162,13 @@ public class Diccionario extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(244, Short.MAX_VALUE)
+                .addContainerGap(218, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btn_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(228, 228, 228))
+                        .addGap(115, 115, 115)
+                        .addComponent(btn_cifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(301, 301, 301))))
@@ -183,10 +195,12 @@ public class Diccionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
-                .addComponent(btn_trans)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_trans)
+                    .addComponent(btn_cifrar))
                 .addGap(26, 26, 26))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -227,11 +241,13 @@ public class Diccionario extends javax.swing.JFrame {
             if (arreglo.length > 4) {
                 JOptionPane.showMessageDialog(null, "Máximo 4 palabras", "ERROR", JOptionPane.ERROR_MESSAGE);
                 txtarea_trad1.setText("");
-            } else
+            } else {
                 if (lbl_i1.getText().equalsIgnoreCase("INGLES"))
                     txtarea_trad2.setText(traduce_to_Español(arreglo));
                 if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL"))
                     txtarea_trad2.setText(traduce_to_Ingles(arreglo));
+                btn_cifrar.setEnabled(true);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al digitar los textos a traducir", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -261,6 +277,12 @@ public class Diccionario extends javax.swing.JFrame {
 
         InsertarPalabra(n);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
+        String[] letras = txtarea_trad2.getText().split(",");
+        
+        
+    }//GEN-LAST:event_btn_cifrarActionPerformed
 
 //    SUBRUTINA INSERTAR PALABRAS
     void InsertarPalabra(int n) {
@@ -353,6 +375,7 @@ public class Diccionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_change;
+    private javax.swing.JButton btn_cifrar;
     private javax.swing.JButton btn_trans;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
