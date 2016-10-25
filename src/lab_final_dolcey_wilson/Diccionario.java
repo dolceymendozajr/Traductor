@@ -223,18 +223,15 @@ public class Diccionario extends javax.swing.JFrame {
         try {
             cadena = txtarea_trad1.getText();
             String[] arreglo = cadena.split(",");
-
-            if (lbl_i1.getText().equalsIgnoreCase("INGLES")) {
-                txtarea_trad2.setText(traduce_to_Español(arreglo));
-            }
-            if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL")) {
-                txtarea_trad2.setText(traduce_to_Ingles(arreglo));
-            }
             
-            for (int i = 0; i < arreglo.length; i++) {
-                
-            }
-
+            if (arreglo.length > 4) {
+                JOptionPane.showMessageDialog(null, "Máximo 4 palabras", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtarea_trad1.setText("");
+            } else
+                if (lbl_i1.getText().equalsIgnoreCase("INGLES"))
+                    txtarea_trad2.setText(traduce_to_Español(arreglo));
+                if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL"))
+                    txtarea_trad2.setText(traduce_to_Ingles(arreglo));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al digitar los textos a traducir", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -281,7 +278,6 @@ public class Diccionario extends javax.swing.JFrame {
                     i--;
                 }
             }
-
             if (sw == false) {
                 p_ingles[i] = tempp;
                 p_español[i] = JOptionPane.showInputDialog(null, "Palabra en español:", "Ingresar palabra " + i, JOptionPane.INFORMATION_MESSAGE);
@@ -291,14 +287,14 @@ public class Diccionario extends javax.swing.JFrame {
         }
     }
 
-    //    FUNCION TRADUCIR A ESPAÑOL
+//    FUNCION TRADUCIR A ESPAÑOL
     String traduce_to_Español(String[] ing) {
         String trad = "";
         for (String ing1 : ing) {
             for (int j = 0; j < p_ingles.length; j++) {
                 if (ing1.equalsIgnoreCase(p_ingles[j])) {
                     if (!trad.isEmpty())
-                        trad = trad + ", " + p_español[j];
+                        trad = trad + "," + p_español[j];
                     else
                         trad = p_español[j];
                 }
@@ -314,7 +310,7 @@ public class Diccionario extends javax.swing.JFrame {
             for (int j = 0; j < p_español.length; j++) {
                 if (esp1.equalsIgnoreCase(p_español[j])) {
                     if (!trad.isEmpty())
-                        trad = trad + ", " + p_ingles[j];
+                        trad = trad + "," + p_ingles[j];
                     else
                         trad = p_ingles[j];
                 }
