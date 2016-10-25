@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 public class Cifrador extends javax.swing.JFrame {
     MetodoEncript encripaa = new MetodoEncript();
+    EncriptarVigenere vigenere_metodo = new EncriptarVigenere();
     public Cifrador() {
         initComponents();
     }
@@ -79,6 +80,11 @@ public class Cifrador extends javax.swing.JFrame {
         jLabel3.setText("Mensaje cifrado:");
 
         op_EncripPropio.setText("Propio");
+        op_EncripPropio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Propio_op(evt);
+            }
+        });
         op_EncripPropio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 op_EncripPropioActionPerformed(evt);
@@ -86,6 +92,11 @@ public class Cifrador extends javax.swing.JFrame {
         });
 
         op_EncripVigenere.setText("Vigenere");
+        op_EncripVigenere.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Vigenere_op(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,22 +165,46 @@ public class Cifrador extends javax.swing.JFrame {
     private void btn_EncriptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EncriptarActionPerformed
         txt_ERROR.setText("");
         int clave = 123;
+        
         try {
-            if (!txt_Clave.getText().isEmpty() && !txt_Mensaje.getText().isEmpty()) {
+           if (op_EncripPropio.isSelected()) {
                 try {
-                    String cla = txt_Clave.getText();
-                    clave = Integer.parseInt(cla);
-                    if (clave > 99 && clave < 800) {
+                    if (!txt_Clave.getText().isEmpty() && !txt_Mensaje.getText().isEmpty()) {
                         try {
-                            String frase = txt_Mensaje.getText();
-                            String encriptado = MetodoEncript.encrip(frase, clave); // INVOCAR A FUNCIÓN "encrip" DE LA CLASE "MetodoEncript" PARA ENCRIPTAR LA FRASE
-                            txt_Encriptado.setText(encriptado); // MOSTRAR TEXTO ENCRIPTADO
-                        } catch (Exception e) { txt_ERROR.setText("Hubo un error desconocido, inténtalo con otra clave o más tarde"); }
-                    } else txt_ERROR.setText("La clave debe ser mayor que 99 y menor que 800");
-                } catch (Exception e) { JOptionPane.showMessageDialog(rootPane, "La clave solo puede ser números :)", "ERROR", JOptionPane.ERROR_MESSAGE); }
+                            String cla = txt_Clave.getText();
+                            clave = Integer.parseInt(cla);
+                            if (clave > 99 && clave < 800) {
+                                try {
+                                    String frase = txt_Mensaje.getText();
+                                    String encriptado = MetodoEncript.encrip(frase, clave); // INVOCAR A FUNCIÓN "encrip" DE LA CLASE "MetodoEncript" PARA ENCRIPTAR LA FRASE
+                                    txt_Encriptado.setText(encriptado); // MOSTRAR TEXTO ENCRIPTADO
+                                } catch (Exception e) { txt_ERROR.setText("Hubo un error desconocido, inténtalo con otra clave o más tarde"); }
+                            } else txt_ERROR.setText("La clave debe ser mayor que 99 y menor que 800");
+                        } catch (Exception e) { JOptionPane.showMessageDialog(rootPane, "La clave solo puede ser números enteros :)", "ERROR", JOptionPane.ERROR_MESSAGE); }
+                    } else
+                        JOptionPane.showMessageDialog(rootPane, "No puedes dejar un campo vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
+                } catch (Exception e) {}
+            } else if (op_EncripVigenere.isSelected()) {
+                try {
+                   if (!txt_Clave.getText().isEmpty() && !txt_Mensaje.getText().isEmpty()) {
+                       try {
+                           try {
+                               String cla = txt_Clave.getText();
+                               String message = txt_Mensaje.getText();
+                               
+                               txt_Encriptado.setText(vigenere_metodo.Encript(message, cla));
+                           } catch (Exception e) { txt_ERROR.setText("Hubo un error desconocido, inténtalo con otra clave o más tarde"); }
+                       } catch (Exception e) { JOptionPane.showMessageDialog(rootPane, "La clave solo puede ser letras :)", "ERROR", JOptionPane.ERROR_MESSAGE); }
+                   } else
+                       JOptionPane.showMessageDialog(rootPane, "No puedes dejar un campo vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
+               } catch (Exception e) {
+               }
             } else
-                JOptionPane.showMessageDialog(rootPane, "No puedes dejar un campo vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) { }
+                JOptionPane.showMessageDialog(rootPane, "Debe seleccionar una opción de cifrado :)", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {}
+        
+        
+        
     }//GEN-LAST:event_btn_EncriptarActionPerformed
 
     private void txt_EncriptadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_EncriptadoActionPerformed
@@ -183,6 +218,16 @@ public class Cifrador extends javax.swing.JFrame {
     private void txt_ClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ClaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_ClaveActionPerformed
+
+    private void Vigenere_op(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Vigenere_op
+        if (op_EncripPropio.isSelected())
+            op_EncripPropio.setSelected(false);
+    }//GEN-LAST:event_Vigenere_op
+
+    private void Propio_op(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Propio_op
+        if (op_EncripVigenere.isSelected())
+            op_EncripVigenere.setSelected(false);
+    }//GEN-LAST:event_Propio_op
 
     /**
      * @param args the command line arguments
