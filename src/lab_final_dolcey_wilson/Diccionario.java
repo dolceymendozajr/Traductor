@@ -83,6 +83,9 @@ public class Diccionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtarea_trad1 = new javax.swing.JTextArea();
         lbl_i1 = new javax.swing.JLabel();
@@ -94,9 +97,18 @@ public class Diccionario extends javax.swing.JFrame {
         btn_trans = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btn_cifrar = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        Acerca = new javax.swing.JMenuItem();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+
+        jLabel2.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
+        jLabel2.setText("Made by:");
+
+        jLabel3.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
+        jLabel3.setText("Wilson Tovar Angulo");
+
+        jLabel4.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
+        jLabel4.setText("Dolcey Mendoza Anaya");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Diccionario");
@@ -104,22 +116,22 @@ public class Diccionario extends javax.swing.JFrame {
         setResizable(false);
 
         txtarea_trad1.setColumns(20);
-        txtarea_trad1.setFont(new java.awt.Font("HP Simplified Light", 0, 14)); // NOI18N
+        txtarea_trad1.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
         txtarea_trad1.setRows(5);
         jScrollPane2.setViewportView(txtarea_trad1);
 
-        lbl_i1.setFont(new java.awt.Font("HP Simplified Light", 1, 18)); // NOI18N
+        lbl_i1.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         lbl_i1.setText("INGLES");
 
-        jLabel1.setFont(new java.awt.Font("HP Simplified", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 48)); // NOI18N
         jLabel1.setText("DICCIONARIO");
 
         txtarea_trad2.setColumns(20);
-        txtarea_trad2.setFont(new java.awt.Font("HP Simplified Light", 0, 14)); // NOI18N
+        txtarea_trad2.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
         txtarea_trad2.setRows(5);
         jScrollPane1.setViewportView(txtarea_trad2);
 
-        lbl_i2.setFont(new java.awt.Font("HP Simplified Light", 1, 18)); // NOI18N
+        lbl_i2.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         lbl_i2.setText("ESPAÑOL");
 
         btn_change.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lab_final_dolcey_wilson/change.png"))); // NOI18N
@@ -133,7 +145,7 @@ public class Diccionario extends javax.swing.JFrame {
             }
         });
 
-        btn_trans.setFont(new java.awt.Font("HP Simplified Light", 1, 18)); // NOI18N
+        btn_trans.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         btn_trans.setText("TRADUCIR");
         btn_trans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +153,7 @@ public class Diccionario extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
         jButton1.setText("Insertar Palabras");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,7 +161,7 @@ public class Diccionario extends javax.swing.JFrame {
             }
         });
 
-        btn_cifrar.setFont(new java.awt.Font("HP Simplified Light", 1, 12)); // NOI18N
+        btn_cifrar.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 14)); // NOI18N
         btn_cifrar.setText("CIFRAR TRAD.");
         btn_cifrar.setEnabled(false);
         btn_cifrar.addActionListener(new java.awt.event.ActionListener() {
@@ -157,20 +170,14 @@ public class Diccionario extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Archivo");
+        jLabel5.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
+        jLabel5.setText("Made by:");
 
-        Acerca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, 0));
-        Acerca.setText("Acerca");
-        Acerca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AcercaActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Acerca);
+        jLabel6.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
+        jLabel6.setText("Wilson Tovar Agudelo");
 
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
+        jLabel7.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
+        jLabel7.setText("Dolcey Mendoza Anaya");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,17 +186,28 @@ public class Diccionario extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115)
-                        .addComponent(btn_cifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(301, 301, 301))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_cifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(300, 300, 300)
+                                .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(45, 45, 45))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addGap(78, 78, 78)
+                                .addComponent(btn_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 235, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -201,10 +219,10 @@ public class Diccionario extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                                 .addComponent(lbl_i1)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_i2))
                             .addContainerGap()))))
         );
@@ -213,13 +231,21 @@ public class Diccionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addGap(67, 67, 67)
+                .addComponent(btn_cifrar)
+                .addGap(90, 90, 90))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_trans)
-                    .addComponent(btn_cifrar))
-                .addGap(26, 26, 26))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_trans))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -234,7 +260,7 @@ public class Diccionario extends javax.swing.JFrame {
                             .addComponent(lbl_i1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(55, Short.MAX_VALUE)))
+                    .addContainerGap(144, Short.MAX_VALUE)))
         );
 
         pack();
@@ -301,10 +327,6 @@ public class Diccionario extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btn_cifrarActionPerformed
-
-    private void AcercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcercaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AcercaActionPerformed
 
 //    SUBRUTINA INSERTAR PALABRAS
     void InsertarPalabra(int n) {
@@ -396,14 +418,17 @@ public class Diccionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Acerca;
     private javax.swing.JButton btn_change;
     private javax.swing.JButton btn_cifrar;
     private javax.swing.JButton btn_trans;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_i1;
