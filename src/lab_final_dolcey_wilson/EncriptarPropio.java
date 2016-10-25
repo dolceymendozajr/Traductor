@@ -23,56 +23,98 @@ public class EncriptarPropio extends javax.swing.JFrame {
         txt_Mensaje = new javax.swing.JTextArea();
         txt_Encriptado = new javax.swing.JTextField();
         txt_ERROR = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(250, 250));
+        setResizable(false);
 
-        btn_Encriptar.setText("Encriptar");
+        btn_Encriptar.setFont(new java.awt.Font("HP Simplified", 1, 18)); // NOI18N
+        btn_Encriptar.setText("Cifrar");
         btn_Encriptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_EncriptarActionPerformed(evt);
             }
         });
 
+        txt_Clave.setFont(new java.awt.Font("HP Simplified Light", 0, 12)); // NOI18N
         txt_Clave.setText("123");
 
         txt_Mensaje.setColumns(20);
+        txt_Mensaje.setFont(new java.awt.Font("HP Simplified Light", 0, 14)); // NOI18N
         txt_Mensaje.setRows(5);
         txt_Mensaje.setText("lalalalalalalala encriptame");
         jScrollPane1.setViewportView(txt_Mensaje);
 
+        txt_Encriptado.setFont(new java.awt.Font("HP Simplified Light", 0, 14)); // NOI18N
         txt_Encriptado.setText(":)");
         txt_Encriptado.setToolTipText("Texto encriptado");
+        txt_Encriptado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_EncriptadoActionPerformed(evt);
+            }
+        });
+
+        txt_ERROR.setFont(new java.awt.Font("HP Simplified Light", 2, 14)); // NOI18N
+        txt_ERROR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_ERROR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel1.setFont(new java.awt.Font("HP Simplified Light", 1, 14)); // NOI18N
+        jLabel1.setText("Clave:");
+
+        jLabel2.setFont(new java.awt.Font("HP Simplified Light", 1, 14)); // NOI18N
+        jLabel2.setText("Mensaje a cifrar:");
+
+        jLabel3.setFont(new java.awt.Font("HP Simplified Light", 1, 14)); // NOI18N
+        jLabel3.setText("Mensaje cifrado:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_ERROR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Encriptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txt_Encriptado)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txt_Clave, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_ERROR, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addComponent(btn_Encriptar)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(txt_Clave, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 17, Short.MAX_VALUE)))
+                .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Clave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Encriptar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(txt_ERROR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(41, 41, 41)
-                .addComponent(txt_Encriptado, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_Clave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_ERROR, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_Encriptar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_Encriptado, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,6 +140,10 @@ public class EncriptarPropio extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "No puedes dejar un campo vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) { }
     }//GEN-LAST:event_btn_EncriptarActionPerformed
+
+    private void txt_EncriptadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_EncriptadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_EncriptadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +182,9 @@ public class EncriptarPropio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Encriptar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txt_Clave;
     private javax.swing.JLabel txt_ERROR;
