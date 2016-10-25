@@ -94,6 +94,9 @@ public class Diccionario extends javax.swing.JFrame {
         btn_trans = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btn_cifrar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        Acerca = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Diccionario");
@@ -154,6 +157,21 @@ public class Diccionario extends javax.swing.JFrame {
             }
         });
 
+        jMenu1.setText("Archivo");
+
+        Acerca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, 0));
+        Acerca.setText("Acerca");
+        Acerca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AcercaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(Acerca);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,7 +213,7 @@ public class Diccionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -216,7 +234,7 @@ public class Diccionario extends javax.swing.JFrame {
                             .addComponent(lbl_i1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(68, Short.MAX_VALUE)))
+                    .addContainerGap(55, Short.MAX_VALUE)))
         );
 
         pack();
@@ -283,6 +301,10 @@ public class Diccionario extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btn_cifrarActionPerformed
+
+    private void AcercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcercaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AcercaActionPerformed
 
 //    SUBRUTINA INSERTAR PALABRAS
     void InsertarPalabra(int n) {
@@ -374,11 +396,14 @@ public class Diccionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Acerca;
     private javax.swing.JButton btn_change;
     private javax.swing.JButton btn_cifrar;
     private javax.swing.JButton btn_trans;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_i1;
