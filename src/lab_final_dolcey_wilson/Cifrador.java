@@ -2,9 +2,9 @@ package lab_final_dolcey_wilson;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
-public class EncriptarPropio extends javax.swing.JFrame {
+public class Cifrador extends javax.swing.JFrame {
     MetodoEncript encripaa = new MetodoEncript();
-    public EncriptarPropio() {
+    public Cifrador() {
         initComponents();
     }
 
@@ -17,6 +17,7 @@ public class EncriptarPropio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         btn_Encriptar = new javax.swing.JButton();
         txt_Clave = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -27,7 +28,10 @@ public class EncriptarPropio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        jFormattedTextField1.setText("jFormattedTextField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cifrador");
         setLocation(new java.awt.Point(250, 250));
         setResizable(false);
 
@@ -40,16 +44,18 @@ public class EncriptarPropio extends javax.swing.JFrame {
         });
 
         txt_Clave.setFont(new java.awt.Font("HP Simplified Light", 0, 12)); // NOI18N
-        txt_Clave.setText("123");
+        txt_Clave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_ClaveActionPerformed(evt);
+            }
+        });
 
         txt_Mensaje.setColumns(20);
         txt_Mensaje.setFont(new java.awt.Font("HP Simplified Light", 0, 14)); // NOI18N
         txt_Mensaje.setRows(5);
-        txt_Mensaje.setText("lalalalalalalala encriptame");
         jScrollPane1.setViewportView(txt_Mensaje);
 
         txt_Encriptado.setFont(new java.awt.Font("HP Simplified Light", 0, 14)); // NOI18N
-        txt_Encriptado.setText(":)");
         txt_Encriptado.setToolTipText("Texto encriptado");
         txt_Encriptado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +151,10 @@ public class EncriptarPropio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_EncriptadoActionPerformed
 
+    private void txt_ClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_ClaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -162,26 +172,28 @@ public class EncriptarPropio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EncriptarPropio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cifrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EncriptarPropio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cifrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EncriptarPropio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cifrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EncriptarPropio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cifrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EncriptarPropio().setVisible(true);
+                new Cifrador().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Encriptar;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
