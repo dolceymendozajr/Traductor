@@ -75,7 +75,7 @@ public class EncriptarVigenere {
     }
 
     static String Desencript(String texto, String pass) {
-        String desencriptado = "";
+        String desencriptado = ""; //
         GenerarVect(texto, pass);
         
         int sum = 0;
