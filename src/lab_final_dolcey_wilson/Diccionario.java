@@ -3,10 +3,9 @@ package lab_final_dolcey_wilson;
 import javax.swing.JOptionPane;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import static java.util.regex.Pattern.compile;
 
 public class Diccionario extends javax.swing.JFrame {
-
-    static EncriptarVigenere Encrip2 = new EncriptarVigenere();
     public static String default_ingles[] = {"advice", "career", "challenge", "experience",
         "hire", "ideal", "interview", "manager",
         "long", "reward", "salary", "red",
@@ -46,10 +45,6 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    CONSTRUCTOR
     public Diccionario() {
-        String a = Encrip2.Encript("hola", "abc");
-        System.out.println("ENCRIPTADO: " + a);
-        String b = Encrip2.Desencript(a, "abc");
-        System.out.println("DESENCRIPTADO: " + b);
         for (int i = 0; i < default_ingles.length; i++) {
             p_ingles[i] = default_ingles[i];
             p_español[i] = default_español[i];
@@ -326,16 +321,26 @@ public class Diccionario extends javax.swing.JFrame {
     private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
         EncriptarVigenere encrip_vigenere = new EncriptarVigenere();
         MetodoEncript encrip_propio = new MetodoEncript();
+        
         String[] letras = txtarea_trad2.getText().split(",");
+        String[] cifradas_vige = new String[letras.length];
+        String[] cifradas_prop = new String[letras.length];
+        
         String clave = JOptionPane.showInputDialog(null, "Introduzca clave para cifrado de Vigenère: ", "CLAVE", JOptionPane.QUESTION_MESSAGE);
-    
         try {
-            int a = Integer.parseInt(clave);
-            for (int i = 0; i < letras.length; i++) {
-                
-            }
+            Pattern patron = Pattern.compile("(\\d|\\s)+"); // 
+            Matcher match = patron.matcher(clave);
+            
+            if (!match.matches()) {
+                for (int i = 0; i < letras.length; i++) {
+                    cifradas_vige[i] = encrip_vigenere.Encript(letras[i], clave);
+                    JOptionPane.showMessageDialog(rootPane, "PALABRA: " + letras[i] + " / ENCRIPTADA: " + cifradas_vige[i], "VIGENERE", JOptionPane.INFORMATION_MESSAGE);
+                    System.out.println(cifradas_vige[i]);
+                }
+            } else
+                JOptionPane.showMessageDialog(rootPane, "La clave solo debe contener letras :)", "ERROR", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "La clave solo debe contener letras :)", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Esto es incómodo, pero ha habido un error :)", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
  
     }//GEN-LAST:event_btn_cifrarActionPerformed
