@@ -2,7 +2,7 @@ package lab_final_dolcey_wilson;
 
 public class EncriptarVigenere {
 
-    public static char dicc[] = new char[33]; // ALFABETO ESPAÑOL (Ñ)
+    public static char dicc[] = new char[32]; // ALFABETO ESPAÑOL (Ñ)
     public static char pal1[] = new char[100];
     public static char pal2[] = new char[100];
     public static char clave[] = new char[100];
@@ -11,13 +11,12 @@ public class EncriptarVigenere {
         // BLOQUE 1: GENERAR EL ALFABETO ESPAÑOL :)
         int letra = (int) 'a';
         for (int i = 0; i < 27; i++) {
-            if (i < 14) {
+            if (i < 14)
                 dicc[i] = (char) (letra);
-            } else if (i == 14) {
+            else if (i == 14)
                 dicc[i] = 'ñ';
-            } else if (i > 14) {
+            else if (i > 14)
                 dicc[i] = (char) (letra - 1);
-            }
             letra++;
         }
         
@@ -27,6 +26,9 @@ public class EncriptarVigenere {
         dicc[29] = 'í';
         dicc[30] = 'ó';
         dicc[31] = 'ú';
+        
+//        for (int i = 0; i < dicc.length; i++)
+//            System.out.println(dicc[i]);
         
         // BLOQUE 2: GENERAR LOS VECTORES CON LA PALABRA Y LA CLAVE :)
         int pos = 0, j;

@@ -3,50 +3,63 @@ package lab_final_dolcey_wilson;
 import java.util.Scanner;
 
 public class MetodoEncript {
+
+    static char dicc[] = new char[32];
+//    65 - 90 (A)
+//    97 - 122 (a)
+//    160 - 163 (á)
+//    65 67 68 69 70 71 72 73 74 75 76 78 80 83 84 86 93 95 98 99 100 102 105 107 110 114 120 121 122 152 153 161 163 
+    static int num[] = new int[32];
+    static char abc[] = {'n', 'H', 'a', 'e', 'Q', 'O','R', 'r', 'u', 'Z', 'o','ñ', 'N', 'h', 'J', 'i','p', 'I'};
     static Scanner sc = new Scanner(System.in);
-    static String letras[][] = {{"0", "A", "B", "C", "D"},
-                                {"1", "a", "b", "c", "d"},
-                                {"2", "e", "f", "g", "h"},
-                                {"3", "i", "j", "k", "l"},
-                                {"4", "m", "n", "ñ", "o"},
-                                {"5", "p", "q", "r", "s"},
-                                {"6", "t", "u", "v", "w"},
-                                {"7", "x", "y", "z", " "},
-                                {"8", "á", "é", "í", "ó"},
-        }; // DICCIONARIO DE CONVERSIÓN
-    static String letters[] = {"a", "b", "c", "d"};
-    
+
     public static void main(String[] args) {
-        //clave -> clave para encriptar
-//        System.out.print("ESCRIBA PALABRA: "); String frase = sc.nextLine();
-//        System.out.print("CLAVE: "); int clave = sc.nextInt();
-//
-//        while ((clave <= 99) || (clave > 900)) { System.out.println("CLAVE DEBE TENER 3 DÍGITOS Y DEBE SER MENOR QUE 900: "); clave = sc.nextInt(); }
-//        
-//        System.out.println(""); System.out.println("..."); System.out.println("");
-//        System.out.println("CODIGO GENERADO: " + encrip(frase, clave));
     }
-    
-    // FUNCIÓN PARA ENCRIPTRAR
-    public static String encrip(String frase, int clave) {
-        String str_clave =  clave + "", cod = "";
-        int prt1 = Integer.parseInt(str_clave.substring(0, 2));
-        int prt2 = Integer.parseInt(str_clave.substring(2, 3));
-        
-        for (int i = 0; i < frase.length(); i++) {
-            for (int j = 1; j <= 7; j++) {
-                for (int k = 1; k <= 4; k++) {
-                    // CONVIERTE CADA LETRA (Y ESPACIOS) EN SU CÓDIGO CORRESPONDIENTE :)
-                    if (frase.substring(i, i + 1).equalsIgnoreCase(letras[j][k])) {
-                        if (clave % 2 != 0) {
-                            cod = cod + (j + prt2) + prt1 + letras[0][k]; cod = cod + "//";
-                        } else
-                            cod = cod + (j + prt1) + prt2 + letras[0][k]; cod = cod + "\\";
-                    }
-                }
-            }
+
+    static void GenerarVect() {
+        // BLOQUE 1: GENERAR EL ALFABETO ESPAÑOL :)
+        int letra = (int) 'a';
+        for (int i = 0; i < 27; i++) {
+            if (i < 14)
+                dicc[i] = (char) (letra);
+            else if (i == 14)
+                dicc[i] = 'ñ';
+            else if (i > 14)
+                dicc[i] = (char) (letra - 1);
+            letra++;
         }
+
+        // AGREGAR LAS VOCALES CON TILDE :)
+        dicc[27] = 'á';
+        dicc[28] = 'é';
+        dicc[29] = 'í';
+        dicc[30] = 'ó';
+        dicc[31] = 'ú';
         
+        System.out.println("TAM: " + abc.length);
+        // BLOQUE 2 - GENERAR VECTOR DE NUMEROS
+        for (int i = 0; i < num.length; i++) {
+            num[i] = (int) abc[i];
+            System.out.println(num[i]);
+        }
+    }
+
+    // FUNCIÓN PARA ENCRIPTRAR
+    public static String encrip(String frase) {
+        GenerarVect();
+        int a = 0;
+        String cod = "";
+
+        for (int i = 0; i < frase.length(); i++) {
+            for (int j= 0; j < dicc.length; j++) {
+                if (dicc[j] == frase.charAt(i))
+                    a = num[j];
+            }
+            cod = cod + (char) a;
+        }
+
+        System.out.println(frase + " / " + cod);
+        System.out.println((char) a);
         return cod;
     }
 }

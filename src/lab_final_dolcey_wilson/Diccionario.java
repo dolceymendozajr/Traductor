@@ -47,6 +47,7 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    CONSTRUCTOR
     public Diccionario() {
+        MetodoEncript.encrip("abcefg");
         Binario.Convertir("hola");
         for (int i = 0; i < default_ingles.length; i++) {
             p_ingles[i] = default_ingles[i];
