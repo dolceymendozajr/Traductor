@@ -268,12 +268,11 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    AL PRESIONAR EL BOTON CAMBIAR
     private void btn_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changeActionPerformed
-        String temp_lbl;
-
-        temp_lbl = lbl_i1.getText();
+        String temp_lbl = lbl_i1.getText();
         lbl_i1.setText(lbl_i2.getText());
         lbl_i2.setText(temp_lbl);
         
+        btn_cifrar.setEnabled(false);
     }//GEN-LAST:event_btn_changeActionPerformed
 
 //    AL PRESIONAR EL BOTON DE TRADUCIR
@@ -323,9 +322,16 @@ public class Diccionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
+        EncriptarVigenere encrip_vigenere = new EncriptarVigenere();
+        MetodoEncript encrip_propio = new MetodoEncript();
         String[] letras = txtarea_trad2.getText().split(",");
-        
-        
+        String clave = JOptionPane.showInputDialog(null, "Introduzca clave para cifrado de Vigenère: ", "CLAVE", JOptionPane.QUESTION_MESSAGE);
+    
+        try {
+            
+        } catch (Exception e) {
+        }
+ 
     }//GEN-LAST:event_btn_cifrarActionPerformed
 
 //    SUBRUTINA INSERTAR PALABRAS
