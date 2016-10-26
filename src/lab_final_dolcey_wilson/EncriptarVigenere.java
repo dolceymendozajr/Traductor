@@ -9,14 +9,12 @@ public class EncriptarVigenere {
     
     static void GenerarVect(String texto, String pass) {
         // BLOQUE 1: GENERAR EL ALFABETO ESPAÑOL :)
-//        System.out.println("YUPII");
         int letra = (int) 'a';
         for (int i = 0; i < 27; i++) {
             if (i < 14) dicc[i] = (char) (letra);
             else if (i == 14) dicc[i] = 'ñ';
             else dicc[i] = (char) (letra - 1);
             letra++;
-//            System.out.println("DICC["+i+"]: " + dicc[i]);
         }
         
         // BLOQUE 2: GENERAR LOS VECTORES CON LA PALABRA Y LA CLAVE :)
@@ -31,7 +29,6 @@ public class EncriptarVigenere {
             pal1[i] = temp;
             pal2[i] = clave[pos];                
             pos++;
-//            System.out.println("PAL1: " + pal1[i] + " / PAL2: " + pal2[i]);
         }
     }
 
@@ -42,7 +39,6 @@ public class EncriptarVigenere {
         int xi = 0, ci = 0;
         
         for (int i = 0; i < texto.length(); i++) {
-//            System.out.println("I: " + i);
             int j = 0;
             boolean sw = true;
             
@@ -52,7 +48,6 @@ public class EncriptarVigenere {
                     xi = j;
                 } else 
                     j++;
-//                System.out.println("J1: " + j);
             } while (sw == true && j < 27);
             
             j = 0;
@@ -63,7 +58,6 @@ public class EncriptarVigenere {
                     ci = j;
                 } else
                     j++;
-//                System.out.println("J2: " + j);
             } while (sw == true && j < 27);
             
             int pos_encript = (xi + ci) % 27;
@@ -78,7 +72,6 @@ public class EncriptarVigenere {
         String desencriptado = ""; //
         GenerarVect(texto, pass);
         
-        int sum = 0;
         int xi = 0, ci = 0;
         
         for (int i = 0; i < texto.length(); i++) {
@@ -103,15 +96,12 @@ public class EncriptarVigenere {
                     j++;
             } while (sw && j < 27);
             
-//            System.out.println("Ci: " + ci + " / Xi: " + xi);
             if (xi - ci >= 0) {
                 int a = (xi - ci) % 27;
                 desencriptado = desencriptado + dicc[a];
-//                System.out.println("A: " + a);
             } else if (xi - ci < 0) {
                 int b = (xi - ci + 27) % 27;
                 desencriptado = desencriptado + dicc[b];
-//                System.out.println("B: " + b);
             }
                 
         }
