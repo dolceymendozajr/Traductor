@@ -5,14 +5,16 @@ import java.util.Scanner;
 public class MetodoEncript {
     static Scanner sc = new Scanner(System.in);
     static String letras[][] = {{"0", "A", "B", "C", "D"},
-                                {"1", "A", "B", "C", "D"},
-                                {"2", "E", "F", "G", "H"},
-                                {"3", "I", "J", "K", "L"},
-                                {"4", "M", "N", "Ñ", "O"},
-                                {"5", "P", "Q", "R", "S"},
-                                {"6", "T", "U", "V", "W"},
-                                {"7", "X", "Y", "Z", " "}
+                                {"1", "a", "b", "c", "d"},
+                                {"2", "e", "f", "g", "h"},
+                                {"3", "i", "j", "k", "l"},
+                                {"4", "m", "n", "ñ", "o"},
+                                {"5", "p", "q", "r", "s"},
+                                {"6", "t", "u", "v", "w"},
+                                {"7", "x", "y", "z", " "},
+                                {"8", "á", "é", "í", "ó"},
         }; // DICCIONARIO DE CONVERSIÓN
+    static String letters[] = {"a", "b", "c", "d"};
     
     public static void main(String[] args) {
         //clave -> clave para encriptar

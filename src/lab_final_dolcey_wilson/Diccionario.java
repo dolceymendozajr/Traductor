@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import static java.util.regex.Pattern.compile;
 
 public class Diccionario extends javax.swing.JFrame {
+
     public static String default_ingles[] = {"advice", "career", "challenge", "experience",
         "hire", "ideal", "interview", "manager",
         "long", "reward", "salary", "red",
@@ -268,7 +269,7 @@ public class Diccionario extends javax.swing.JFrame {
         String temp_lbl = lbl_i1.getText();
         lbl_i1.setText(lbl_i2.getText());
         lbl_i2.setText(temp_lbl);
-        
+
         btn_cifrar.setEnabled(false);
     }//GEN-LAST:event_btn_changeActionPerformed
 
@@ -277,17 +278,21 @@ public class Diccionario extends javax.swing.JFrame {
         try {
             cadena = txtarea_trad1.getText();
             String[] arreglo = cadena.split(",");
-            
+
             if (arreglo.length > 4) {
                 JOptionPane.showMessageDialog(null, "Máximo 4 palabras", "ERROR", JOptionPane.ERROR_MESSAGE);
                 txtarea_trad1.setText("");
             } else {
-                if (lbl_i1.getText().equalsIgnoreCase("INGLES"))
+                if (lbl_i1.getText().equalsIgnoreCase("INGLES")) {
                     txtarea_trad2.setText(traduce_to_Español(arreglo));
-                if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL"))
+                }
+                if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL")) {
                     txtarea_trad2.setText(traduce_to_Ingles(arreglo));
+                }
                 if (!txtarea_trad2.getText().isEmpty()) // PERMITE PRESIONAR EL BOTON CIFRAR TRAD. SI SE TRADUJO ALGO 
+                {
                     btn_cifrar.setEnabled(true);
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al digitar los textos a traducir", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -309,8 +314,9 @@ public class Diccionario extends javax.swing.JFrame {
                     }
                     sw = false;
                 }
-                if (entrada == null)
+                if (entrada == null) {
                     sw = false;
+                }
             } catch (HeadlessException | NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico");
             }
@@ -322,28 +328,22 @@ public class Diccionario extends javax.swing.JFrame {
 //    AL PRESIONAR EL BOTON CIFRAR TRAD.
     private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
         MetodoEncript encrip_propio = new MetodoEncript();
-        
+
         String[] letras = txtarea_trad2.getText().split(",");
         String[] cifradas_vige = new String[letras.length];
         String[] cifradas_prop = new String[letras.length];
-        
+
         String clave = JOptionPane.showInputDialog(null, "Introduzca clave para cifrado de Vigenère: ", "CLAVE", JOptionPane.QUESTION_MESSAGE);
         try {
-            Pattern patron = Pattern.compile("(\\d|\\s)+"); // 
-            Matcher match = patron.matcher(clave);
-            
-            if (!match.matches()) {
-                for (int i = 0; i < letras.length; i++) {
-                    cifradas_vige[i] = EncriptarVigenere.Encript(letras[i], clave);
-                    JOptionPane.showMessageDialog(rootPane, "PALABRA: " + letras[i] + " / ENCRIPTADA: " + cifradas_vige[i], "VIGENERE", JOptionPane.INFORMATION_MESSAGE);
-                    System.out.println(cifradas_vige[i]);
-                }
-            } else
-                JOptionPane.showMessageDialog(rootPane, "La clave solo debe contener letras :)", "ERROR", JOptionPane.ERROR_MESSAGE);
+            for (int i = 0; i < letras.length; i++) {
+                cifradas_vige[i] = EncriptarVigenere.Encript(letras[i], clave);
+                JOptionPane.showMessageDialog(rootPane, "PALABRA: " + letras[i] + " / ENCRIPTADA: " + cifradas_vige[i], "VIGENERE", JOptionPane.INFORMATION_MESSAGE);
+                System.out.println(cifradas_vige[i]);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Esto es incómodo, pero ha habido un error :)", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
- 
+
     }//GEN-LAST:event_btn_cifrarActionPerformed
 
 //    SUBRUTINA INSERTAR PALABRAS
@@ -362,7 +362,7 @@ public class Diccionario extends javax.swing.JFrame {
                     sw = true;
                 }
             }
-            
+
             if (sw == false) {
                 p_ingles[i] = tempp;
                 p_español[i] = JOptionPane.showInputDialog(null, "Palabra en español:", "Ingresar palabra " + i, JOptionPane.INFORMATION_MESSAGE);
@@ -378,10 +378,11 @@ public class Diccionario extends javax.swing.JFrame {
         for (String ing1 : ing) {
             for (int j = 0; j < p_ingles.length; j++) {
                 if (ing1.equalsIgnoreCase(p_ingles[j])) {
-                    if (!trad.isEmpty())
+                    if (!trad.isEmpty()) {
                         trad = trad + "," + p_español[j];
-                    else
+                    } else {
                         trad = p_español[j];
+                    }
                 }
             }
         }
@@ -394,10 +395,11 @@ public class Diccionario extends javax.swing.JFrame {
         for (String esp1 : esp) {
             for (int j = 0; j < p_español.length; j++) {
                 if (esp1.equalsIgnoreCase(p_español[j])) {
-                    if (!trad.isEmpty())
+                    if (!trad.isEmpty()) {
                         trad = trad + "," + p_ingles[j];
-                    else
+                    } else {
                         trad = p_ingles[j];
+                    }
                 }
             }
         }
