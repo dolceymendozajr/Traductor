@@ -289,7 +289,8 @@ public class Diccionario extends javax.swing.JFrame {
                     txtarea_trad2.setText(traduce_to_Español(arreglo));
                 if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL"))
                     txtarea_trad2.setText(traduce_to_Ingles(arreglo));
-                btn_cifrar.setEnabled(true);
+                if (!txtarea_trad2.getText().isEmpty()) // PERMITE PRESIONAR EL BOTON CIFRAR TRAD. SI SE TRADUJO ALGO 
+                    btn_cifrar.setEnabled(true);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al digitar los textos a traducir", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -321,6 +322,7 @@ public class Diccionario extends javax.swing.JFrame {
         InsertarPalabra(n);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+//    AL PRESIONAR EL BOTON CIFRAR TRAD.
     private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
         EncriptarVigenere encrip_vigenere = new EncriptarVigenere();
         MetodoEncript encrip_propio = new MetodoEncript();
@@ -328,8 +330,12 @@ public class Diccionario extends javax.swing.JFrame {
         String clave = JOptionPane.showInputDialog(null, "Introduzca clave para cifrado de Vigenère: ", "CLAVE", JOptionPane.QUESTION_MESSAGE);
     
         try {
-            
+            int a = Integer.parseInt(clave);
+            for (int i = 0; i < letras.length; i++) {
+                
+            }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "La clave solo debe contener letras :)", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
  
     }//GEN-LAST:event_btn_cifrarActionPerformed
