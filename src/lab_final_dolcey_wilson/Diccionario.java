@@ -1,5 +1,6 @@
 package lab_final_dolcey_wilson;
 
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,7 +54,7 @@ public class Diccionario extends javax.swing.JFrame {
         lim = p_lim;
         while (sw) {
             try {
-                String limite = "";
+                String limite;
                 limite = JOptionPane.showInputDialog(null, "Escriba el limite de palabras (Mayor o igual que 100)", "Cambio de limite", JOptionPane.QUESTION_MESSAGE);
                 if ((limite != null) && (!limite.isEmpty())) {
                     lim = Integer.parseInt(limite);
@@ -66,7 +67,7 @@ public class Diccionario extends javax.swing.JFrame {
                 if (limite == null) {
                     sw = false;
                 }
-            } catch (Exception e) {
+            } catch (HeadlessException | NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor entero");
             }
         }
@@ -309,7 +310,7 @@ public class Diccionario extends javax.swing.JFrame {
                 }
                 if (entrada == null)
                     sw = false;
-            } catch (Exception e) {
+            } catch (HeadlessException | NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor numerico");
             }
         }
@@ -319,7 +320,6 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    AL PRESIONAR EL BOTON CIFRAR TRAD.
     private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
-        EncriptarVigenere encrip_vigenere = new EncriptarVigenere();
         MetodoEncript encrip_propio = new MetodoEncript();
         
         String[] letras = txtarea_trad2.getText().split(",");
@@ -333,7 +333,7 @@ public class Diccionario extends javax.swing.JFrame {
             
             if (!match.matches()) {
                 for (int i = 0; i < letras.length; i++) {
-                    cifradas_vige[i] = encrip_vigenere.Encript(letras[i], clave);
+                    cifradas_vige[i] = EncriptarVigenere.Encript(letras[i], clave);
                     JOptionPane.showMessageDialog(rootPane, "PALABRA: " + letras[i] + " / ENCRIPTADA: " + cifradas_vige[i], "VIGENERE", JOptionPane.INFORMATION_MESSAGE);
                     System.out.println(cifradas_vige[i]);
                 }
@@ -347,20 +347,21 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    SUBRUTINA INSERTAR PALABRAS
     void InsertarPalabra(int n) {
-        String tempp = "";
-        boolean sw = false;
-        boolean sw_while = true;
+        String tempp;
+        boolean sw;
         int i = default_ingles.length;
 
-        while (i < (default_ingles.length + n) && sw_while == true) {
+        while (i < default_ingles.length + n) {
             tempp = JOptionPane.showInputDialog(null, "Palabra en ingles:", "Ingresar palabra " + i, JOptionPane.INFORMATION_MESSAGE);
-            for (int j = 0; j < p_ingles.length; j++) {
-                if (tempp.equalsIgnoreCase(p_ingles[j])) {
+            sw = false;
+            for (String p_ingle : p_ingles) {
+                if (tempp.equalsIgnoreCase(p_ingle)) {
                     JOptionPane.showMessageDialog(rootPane, "La palabra ya se encuentra en el diccionario", "Palabra no agregada", JOptionPane.ERROR_MESSAGE);
-                    sw = true;
                     i--;
+                    sw = true;
                 }
             }
+            
             if (sw == false) {
                 p_ingles[i] = tempp;
                 p_español[i] = JOptionPane.showInputDialog(null, "Palabra en español:", "Ingresar palabra " + i, JOptionPane.INFORMATION_MESSAGE);
