@@ -132,16 +132,12 @@ public class Cifrado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
-        i++;
     }//GEN-LAST:event_btn_SiguienteActionPerformed
 
     private void txt_PalabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PalabraActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txt_PalabraActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Diccionario dicc = new Diccionario();
-        dicc.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     public static void main(String args[]) {
@@ -181,6 +177,18 @@ public class Cifrado extends javax.swing.JFrame {
             letras[j] = palabras[j];
         }
         pass = clave;
+        
+        txt_Palabra.setText(letras[i]);
+        txt_Propio.setText(MetodoEncript.encrip(letras[i]));
+        txt_Vigenere.setText(EncriptarVigenere.Encript(letras[i], pass));
+        txt_Propio_Vigenere.setText(EncriptarVigenere.Encript(txt_Propio.getText(), pass));
+        String temp = "";
+        
+        for (int j = 0; j < letras[i].length(); j++) {
+            temp += Binario.Convertir(txt_Propio_Vigenere.getText()) + " ";            
+        }
+            
+        txt_Propio_Vigenere_BInario.setText(temp);
     }
     
 
@@ -192,9 +200,9 @@ public class Cifrado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public static javax.swing.JTextField txt_Palabra;
-    public javax.swing.JTextField txt_Propio;
-    public javax.swing.JTextField txt_Propio_Vigenere;
-    public javax.swing.JTextField txt_Propio_Vigenere_BInario;
-    public javax.swing.JTextField txt_Vigenere;
+    public static javax.swing.JTextField txt_Propio;
+    public static javax.swing.JTextField txt_Propio_Vigenere;
+    public static javax.swing.JTextField txt_Propio_Vigenere_BInario;
+    public static javax.swing.JTextField txt_Vigenere;
     // End of variables declaration//GEN-END:variables
 }
