@@ -351,6 +351,7 @@ public class Diccionario extends javax.swing.JFrame {
         Pattern patt1 = Pattern.compile("[a-zA-Z]");
         Pattern patt2 = Pattern.compile("[ñáéíóú]");
         Matcher matt;
+        
         Cifrado cifrado = new Cifrado();
         String[] letras = txtarea_trad2.getText().split(",");
         String clave = "";
