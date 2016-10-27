@@ -158,6 +158,7 @@ public class Cifrado extends javax.swing.JFrame {
         }
         System.out.println("I: " + i);
         System.out.println("VACIO: "+ vacio);
+        System.out.println("LIBRES: " + (letras.length - vacio));
         if (i < letras.length - vacio) {
             txt_Palabra.setText(letras[i]);
             txt_Propio.setText(MetodoEncript.encrip(letras[i]));
