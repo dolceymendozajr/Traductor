@@ -1,9 +1,14 @@
 package lab_final_dolcey_wilson;
 
+import java.awt.JobAttributes;
+import javax.swing.JOptionPane;
+
 public class Cifrado extends javax.swing.JFrame {
+
     public static String letras[] = new String[4];
-    static int i = 0;
+    static int i;
     static String pass;
+    static int vacio = 0;
 
     public Cifrado() {
         initComponents();
@@ -144,6 +149,32 @@ public class Cifrado extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
+        System.out.println("TAM VECTOR: " + letras.length);
+
+        for (int j = 0; j < letras.length; j++) {
+            if (letras[j] == null) {
+                vacio++;
+            }
+        }
+        System.out.println("I: " + i);
+        System.out.println("VACIO: "+ vacio);
+        if (i < letras.length - vacio) {
+            txt_Palabra.setText(letras[i]);
+            txt_Propio.setText(MetodoEncript.encrip(letras[i]));
+            txt_Vigenere.setText(EncriptarVigenere.Encript(letras[i], pass));
+            txt_Propio_Vigenere.setText(EncriptarVigenere.Encript(txt_Propio.getText(), pass));
+
+            String temp = "";
+            for (int j = 0; j < letras[i].length(); j++) {
+                temp += Binario.Convertir(txt_Propio_Vigenere.getText()) + " ";
+            }
+            txt_Propio_Vigenere_BInario.setText(temp);
+
+            i++;
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Ya no hay más palabras pra mostrar", "ERROR", JOptionPane.ERROR_MESSAGE);
+            btn_Siguiente.setEnabled(false);
+        }
 
     }//GEN-LAST:event_btn_SiguienteActionPerformed
 
@@ -178,29 +209,34 @@ public class Cifrado extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public static void pasarPalabras(String[] palabras, String clave) {
         for (int j = 0; j < palabras.length; j++) {
             letras[j] = palabras[j];
         }
+
         pass = clave;
-        
+
+        i = 0;
+        System.out.println("YUPIIIII");
+
         txt_Palabra.setText(letras[i]);
         txt_Propio.setText(MetodoEncript.encrip(letras[i]));
         txt_Vigenere.setText(EncriptarVigenere.Encript(letras[i], pass));
         txt_Propio_Vigenere.setText(EncriptarVigenere.Encript(txt_Propio.getText(), pass));
+
         String temp = "";
-        
         for (int j = 0; j < letras[i].length(); j++) {
-            temp += Binario.Convertir(txt_Propio_Vigenere.getText()) + " ";            
+            temp += Binario.Convertir(txt_Propio_Vigenere.getText()) + " ";
         }
-            
         txt_Propio_Vigenere_BInario.setText(temp);
+
+        i++;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Siguiente;
+    public static javax.swing.JButton btn_Siguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -377,6 +377,8 @@ public class Diccionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "La clave solo puede contener letras", "ERROR", JOptionPane.ERROR_MESSAGE);
         else {
             try {
+                Cifrado.i = 0;
+                Cifrado.vacio = 0;
                 Cifrado.pasarPalabras(letras, temp);
                 cifrado.setVisible(true); 
             } catch (Exception e) {
