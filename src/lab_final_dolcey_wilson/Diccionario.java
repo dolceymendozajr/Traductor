@@ -47,8 +47,6 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    CONSTRUCTOR
     public Diccionario() {
-        MetodoEncript.encrip("abcefg");
-        Binario.Convertir("hola");
         for (int i = 0; i < default_ingles.length; i++) {
             p_ingles[i] = default_ingles[i];
             p_español[i] = default_español[i];
@@ -67,9 +65,8 @@ public class Diccionario extends javax.swing.JFrame {
                     }
                     sw = false;
                 }
-                if (limite == null) {
+                if (limite == null)
                     sw = false;
-                }
             } catch (HeadlessException | NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor entero");
             }
@@ -328,18 +325,27 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    AL PRESIONAR EL BOTON CIFRAR TRAD.
     private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
-        MetodoEncript encrip_propio = new MetodoEncript();
-
+        Cifrado cifrar = new Cifrado();
         String[] letras = txtarea_trad2.getText().split(",");
-        String[] cifradas_vige = new String[letras.length];
-        String[] cifradas_prop = new String[letras.length];
+        String cifradas_vige;
+        String cifradas_prop;
+        String propio_vige;
+        String binario;
 
         String clave = JOptionPane.showInputDialog(null, "Introduzca clave para cifrado de Vigenère: ", "CLAVE", JOptionPane.QUESTION_MESSAGE);
         try {
             for (int i = 0; i < letras.length; i++) {
-                cifradas_vige[i] = EncriptarVigenere.Encript(letras[i], clave);
-                JOptionPane.showMessageDialog(rootPane, "PALABRA: " + letras[i] + " / ENCRIPTADA: " + cifradas_vige[i], "VIGENERE", JOptionPane.INFORMATION_MESSAGE);
-                System.out.println(cifradas_vige[i]);
+                cifradas_vige = EncriptarVigenere.Encript(letras[i], clave);
+                cifradas_prop = MetodoEncript.encrip(letras[i]);
+                propio_vige = EncriptarVigenere.Encript(cifradas_prop, clave);
+                binario = Binario.Convertir(propio_vige);
+                
+                cifrar.txt_Palabra.setText(letras[i]);
+                cifrar.txt_Propio.setText(cifradas_prop);
+                cifrar.txt_Vigenere.setText(cifradas_vige);
+                cifrar.txt_Propio_Vigenere.setText(propio_vige);
+                cifrar.txt_Propio_Vigenere_BInario.setText(binario);
+                cifrar.setVisible(true);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Esto es incómodo, pero ha habido un error :)", "ERROR", JOptionPane.ERROR_MESSAGE);
