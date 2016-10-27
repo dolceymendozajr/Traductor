@@ -351,6 +351,7 @@ public class Diccionario extends javax.swing.JFrame {
         Pattern patt1 = Pattern.compile("[a-zA-Z]");
         Pattern patt2 = Pattern.compile("[ñáéíóú]");
         Matcher matt;
+        int a = 0;
         
         Cifrado cifrado = new Cifrado();
         String[] letras = txtarea_trad2.getText().split(",");
@@ -358,8 +359,22 @@ public class Diccionario extends javax.swing.JFrame {
         String temp = "";
         temp = JOptionPane.showInputDialog(rootPane, "Escriba la contraseña para encriptar por Vigenère", "CONTRASEÑA", JOptionPane.INFORMATION_MESSAGE);
         
+        
+        for (int i = 0; i < temp.length(); i++) {
+            matt = patt1.matcher(temp.substring(i, i +1));
+            if (matt.matches()) {
+                a++;
+            } else {
+                matt = patt2.matcher(temp.substring(i, i + 1));
+                if (matt.matches())
+                    a++;
+            }
+        }
+        
         if (temp.equals(""))
             JOptionPane.showMessageDialog(rootPane, "La clave no puede estar vacía", "ERROR", JOptionPane.ERROR_MESSAGE);
+        else if (a < temp.length())
+            JOptionPane.showMessageDialog(rootPane, "La clave solo puede contener letras", "ERROR", JOptionPane.ERROR_MESSAGE);
         else {
             try {
                 Cifrado.pasarPalabras(letras, temp);
