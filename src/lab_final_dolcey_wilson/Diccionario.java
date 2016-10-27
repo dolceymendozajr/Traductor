@@ -1,6 +1,8 @@
 package lab_final_dolcey_wilson;
 
 import java.awt.HeadlessException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public class Diccionario extends javax.swing.JFrame {
@@ -346,6 +348,9 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    AL PRESIONAR EL BOTON CIFRAR TRAD.
     private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
+        Pattern patt1 = Pattern.compile("[a-zA-Z]");
+        Pattern patt2 = Pattern.compile("[ñáéíóú]");
+        Matcher matt;
         Cifrado cifrado = new Cifrado();
         String[] letras = txtarea_trad2.getText().split(",");
         String clave = "";
