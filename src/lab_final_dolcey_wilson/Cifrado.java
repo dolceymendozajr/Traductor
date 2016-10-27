@@ -7,6 +7,7 @@ public class Cifrado extends javax.swing.JFrame {
 
     public Cifrado() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
