@@ -223,9 +223,7 @@ public class Diccionario extends javax.swing.JFrame {
                                 .addGap(78, 78, 78)
                                 .addComponent(btn_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_cifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(btn_cifrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -350,15 +348,21 @@ public class Diccionario extends javax.swing.JFrame {
     private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
         Cifrado cifrado = new Cifrado();
         String[] letras = txtarea_trad2.getText().split(",");
-
-//        String clave = JOptionPane.showInputDialog(null, "Introduzca clave para cifrado de Vigenère: ", "CLAVE", JOptionPane.QUESTION_MESSAGE);
-//        try {
-//            Cifrado.pasarPalabras(letras, "abc");
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(rootPane, "Esto es incómodo, pero ha habido un error :)", "ERROR", JOptionPane.ERROR_MESSAGE);
-//        }
-        Cifrado.pasarPalabras(letras, "abc");
-        cifrado.setVisible(true);
+        String clave = "";
+        String temp = "";
+        temp = JOptionPane.showInputDialog(rootPane, "Escriba la contraseña para encriptar por Vigenère", "CONTRASEÑA", JOptionPane.INFORMATION_MESSAGE);
+        
+        if (temp.equals(""))
+            JOptionPane.showMessageDialog(rootPane, "La clave no puede estar vacía", "ERROR", JOptionPane.ERROR_MESSAGE);
+        else {
+            try {
+                Cifrado.pasarPalabras(letras, temp);
+                cifrado.setVisible(true); 
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Ha ocurrido un error. Verifique que la contraseña y el texto a cifrar está bien escrito", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }  
+        
     }//GEN-LAST:event_btn_cifrarActionPerformed
 
 //    SUBRUTINA INSERTAR PALABRAS
@@ -472,6 +476,6 @@ public class Diccionario extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_i1;
     private javax.swing.JLabel lbl_i2;
     private javax.swing.JTextArea txtarea_trad1;
-    private javax.swing.JTextArea txtarea_trad2;
+    public static javax.swing.JTextArea txtarea_trad2;
     // End of variables declaration//GEN-END:variables
 }

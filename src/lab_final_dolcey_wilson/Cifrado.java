@@ -30,7 +30,12 @@ public class Cifrado extends javax.swing.JFrame {
         txt_Propio_Vigenere_BInario = new javax.swing.JTextField();
         btn_Siguiente = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("PALABRA");
 
@@ -132,6 +137,11 @@ public class Cifrado extends javax.swing.JFrame {
     private void txt_PalabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PalabraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_PalabraActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Diccionario dicc = new Diccionario();
+        dicc.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
