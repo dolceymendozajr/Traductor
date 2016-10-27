@@ -1,6 +1,9 @@
 package lab_final_dolcey_wilson;
 
 public class Cifrado extends javax.swing.JFrame {
+    public static String letras[] = new String[4];
+    static int i = 0;
+    static String pass;
 
     public Cifrado() {
         initComponents();
@@ -25,6 +28,7 @@ public class Cifrado extends javax.swing.JFrame {
         txt_Propio_Vigenere = new javax.swing.JTextField();
         txt_Vigenere = new javax.swing.JTextField();
         txt_Propio_Vigenere_BInario = new javax.swing.JTextField();
+        btn_Siguiente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,6 +47,11 @@ public class Cifrado extends javax.swing.JFrame {
 
         txt_Palabra.setEditable(false);
         txt_Palabra.setText(":)");
+        txt_Palabra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_PalabraActionPerformed(evt);
+            }
+        });
 
         txt_Propio_Vigenere.setEditable(false);
         txt_Propio_Vigenere.setText(":)");
@@ -53,6 +62,13 @@ public class Cifrado extends javax.swing.JFrame {
         txt_Propio_Vigenere_BInario.setEditable(false);
         txt_Propio_Vigenere_BInario.setText(":)");
 
+        btn_Siguiente.setText("SIG. >");
+        btn_Siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SiguienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,17 +76,23 @@ public class Cifrado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(txt_Palabra, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Propio, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Propio_Vigenere, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Vigenere, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Propio_Vigenere_BInario, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(txt_Propio, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Propio_Vigenere, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Vigenere, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Propio_Vigenere_BInario, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(36, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txt_Palabra, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_Siguiente)
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +100,9 @@ public class Cifrado extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(13, 13, 13)
-                .addComponent(txt_Palabra, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_Palabra, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Siguiente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -101,9 +125,14 @@ public class Cifrado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
+        i++;
+    }//GEN-LAST:event_btn_SiguienteActionPerformed
+
+    private void txt_PalabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PalabraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_PalabraActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -135,14 +164,23 @@ public class Cifrado extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static void pasarPalabras(String[] palabras, String clave) {
+        for (int j = 0; j < palabras.length; j++) {
+            letras[j] = palabras[j];
+        }
+        pass = clave;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Siguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    public javax.swing.JTextField txt_Palabra;
+    public static javax.swing.JTextField txt_Palabra;
     public javax.swing.JTextField txt_Propio;
     public javax.swing.JTextField txt_Propio_Vigenere;
     public javax.swing.JTextField txt_Propio_Vigenere_BInario;

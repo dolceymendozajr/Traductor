@@ -2,9 +2,6 @@ package lab_final_dolcey_wilson;
 
 import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import static java.util.regex.Pattern.compile;
 
 public class Diccionario extends javax.swing.JFrame {
 
@@ -65,8 +62,9 @@ public class Diccionario extends javax.swing.JFrame {
                     }
                     sw = false;
                 }
-                if (limite == null)
+                if (limite == null) {
                     sw = false;
+                }
             } catch (HeadlessException | NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar un valor entero");
             }
@@ -82,6 +80,8 @@ public class Diccionario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jDialog1 = new javax.swing.JDialog();
+        jDialog2 = new javax.swing.JDialog();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtarea_trad1 = new javax.swing.JTextArea();
         lbl_i1 = new javax.swing.JLabel();
@@ -105,6 +105,28 @@ public class Diccionario extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
         jLabel4.setText("Dolcey Mendoza Anaya");
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Diccionario");
@@ -179,30 +201,31 @@ public class Diccionario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_cifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(300, 300, 300)
+                        .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 314, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(300, 300, 300)
-                                .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(45, 45, 45))
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
                                 .addGap(78, 78, 78)
-                                .addComponent(btn_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 235, Short.MAX_VALUE)))
+                                .addComponent(btn_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_cifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -227,11 +250,11 @@ public class Diccionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(64, 64, 64)
                 .addComponent(btn_cifrar)
-                .addGap(90, 90, 90))
+                .addGap(93, 93, 93))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,32 +348,17 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    AL PRESIONAR EL BOTON CIFRAR TRAD.
     private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
-        Cifrado cifrar = new Cifrado();
+        Cifrado cifrado = new Cifrado();
         String[] letras = txtarea_trad2.getText().split(",");
-        String cifradas_vige;
-        String cifradas_prop;
-        String propio_vige;
-        String binario;
 
-        String clave = JOptionPane.showInputDialog(null, "Introduzca clave para cifrado de Vigenère: ", "CLAVE", JOptionPane.QUESTION_MESSAGE);
-        try {
-            for (int i = 0; i < letras.length; i++) {
-                cifradas_vige = EncriptarVigenere.Encript(letras[i], clave);
-                cifradas_prop = MetodoEncript.encrip(letras[i]);
-                propio_vige = EncriptarVigenere.Encript(cifradas_prop, clave);
-                binario = Binario.Convertir(propio_vige);
-                
-                cifrar.txt_Palabra.setText(letras[i]);
-                cifrar.txt_Propio.setText(cifradas_prop);
-                cifrar.txt_Vigenere.setText(cifradas_vige);
-                cifrar.txt_Propio_Vigenere.setText(propio_vige);
-                cifrar.txt_Propio_Vigenere_BInario.setText(binario);
-                cifrar.setVisible(true);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "Esto es incómodo, pero ha habido un error :)", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-
+//        String clave = JOptionPane.showInputDialog(null, "Introduzca clave para cifrado de Vigenère: ", "CLAVE", JOptionPane.QUESTION_MESSAGE);
+//        try {
+//            Cifrado.pasarPalabras(letras, "abc");
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(rootPane, "Esto es incómodo, pero ha habido un error :)", "ERROR", JOptionPane.ERROR_MESSAGE);
+//        }
+        Cifrado.pasarPalabras(letras, "abc");
+        cifrado.setVisible(true);
     }//GEN-LAST:event_btn_cifrarActionPerformed
 
 //    SUBRUTINA INSERTAR PALABRAS
@@ -450,6 +458,8 @@ public class Diccionario extends javax.swing.JFrame {
     private javax.swing.JButton btn_cifrar;
     private javax.swing.JButton btn_trans;
     private javax.swing.JButton jButton1;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
