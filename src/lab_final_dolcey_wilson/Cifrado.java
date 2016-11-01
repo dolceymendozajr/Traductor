@@ -36,6 +36,7 @@ public class Cifrado extends javax.swing.JFrame {
         txt_Propio_Vigenere_BInario = new javax.swing.JTextField();
         btn_Siguiente = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
@@ -109,7 +110,7 @@ public class Cifrado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addComponent(btn_Siguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 62, Short.MAX_VALUE))
+                .addGap(0, 61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,9 +167,8 @@ public class Cifrado extends javax.swing.JFrame {
             txt_Propio_Vigenere.setText(EncriptarVigenere.Encript(txt_Propio.getText(), pass));
 
             String temp = "";
-            for (int j = 0; j < letras[i].length(); j++) {
+            for (int j = 0; j < letras[i].length(); j++)
                 temp += Binario.Convertir(txt_Propio_Vigenere.getText()) + " ";
-            }
             txt_Propio_Vigenere_BInario.setText(temp);
 
             i++;
@@ -227,10 +227,9 @@ public class Cifrado extends javax.swing.JFrame {
         txt_Propio_Vigenere.setText(EncriptarVigenere.Encript(txt_Propio.getText(), pass));
 
         String temp = "";
-        for (int j = 0; j < letras[i].length(); j++) {
+        for (int j = 0; j < letras[i].length(); j++)                                                            
             temp += Binario.Convertir(txt_Propio_Vigenere.getText()) + " ";
-        }
-        txt_Propio_Vigenere_BInario.setText(temp);
+         txt_Propio_Vigenere_BInario.setText(temp);
 
         i++;
     }

@@ -1,18 +1,3 @@
-/*
- * Copyright 2016 administrador.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package lab_final_dolcey_wilson;
 
 import java.awt.Desktop;
@@ -20,11 +5,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-/**
- *
- * @author administrador
- */
 public class Ayuda extends javax.swing.JFrame {
+
     public Desktop desktop = Desktop.getDesktop();
 
     /**
@@ -47,6 +29,7 @@ public class Ayuda extends javax.swing.JFrame {
         link_Dolcey = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         link_WILSON1 = new javax.swing.JLabel();
+        link_WILSON2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -69,11 +52,29 @@ public class Ayuda extends javax.swing.JFrame {
         jButton1.setToolTipText("Documentación");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         link_WILSON1.setText("HECHO POR:");
         link_WILSON1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 link_WILSON1MouseClicked(evt);
+            }
+        });
+
+        link_WILSON2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        link_WILSON2.setText("<html><center>AYUDA</center></html>");
+        link_WILSON2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                link_WILSON2MouseClicked(evt);
             }
         });
 
@@ -93,18 +94,22 @@ public class Ayuda extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(link_WILSON1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))))
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(link_WILSON2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(67, 67, 67))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(link_WILSON2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(link_WILSON1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(link_WILSON, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,8 +136,32 @@ public class Ayuda extends javax.swing.JFrame {
     }//GEN-LAST:event_link_DolceyMouseClicked
 
     private void link_WILSON1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_WILSON1MouseClicked
-        // TODO add your handling code here:
+        try {
+            Desktop.getDesktop().browse(new URI("https://github.com/dolceymendozajr/lab_final"));
+        } catch (URISyntaxException | IOException ex) {
+        }
     }//GEN-LAST:event_link_WILSON1MouseClicked
+
+    private void link_WILSON2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_link_WILSON2MouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://github.com/dolceymendozajr/lab_final"));
+        } catch (URISyntaxException | IOException ex) {
+        }
+    }//GEN-LAST:event_link_WILSON2MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        try {
+            Desktop.getDesktop().browse(new URI("https://github.com/dolceymendozajr/lab_final"));
+        } catch (URISyntaxException | IOException ex) {
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            Desktop.getDesktop().browse(new URI("https://github.com/dolceymendozajr/lab_final"));
+        } catch (URISyntaxException | IOException ex) {
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,5 +203,6 @@ public class Ayuda extends javax.swing.JFrame {
     private javax.swing.JLabel link_Dolcey;
     private javax.swing.JLabel link_WILSON;
     private javax.swing.JLabel link_WILSON1;
+    private javax.swing.JLabel link_WILSON2;
     // End of variables declaration//GEN-END:variables
 }

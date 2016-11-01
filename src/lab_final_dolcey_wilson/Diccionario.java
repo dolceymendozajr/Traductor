@@ -96,6 +96,7 @@ public class Diccionario extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btn_cifrar = new javax.swing.JButton();
         btn_Help = new javax.swing.JButton();
+        btn_Descrifrar = new javax.swing.JButton();
 
         jLabel2.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
         jLabel2.setText("Made by:");
@@ -195,6 +196,14 @@ public class Diccionario extends javax.swing.JFrame {
             }
         });
 
+        btn_Descrifrar.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 14)); // NOI18N
+        btn_Descrifrar.setText("<html>INGRESAR TEXTO<br> CIFRADO<html>");
+        btn_Descrifrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_DescrifrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -211,7 +220,9 @@ public class Diccionario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(14, 14, 14)
+                        .addComponent(btn_Descrifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_cifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -243,10 +254,12 @@ public class Diccionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btn_Help))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
-                .addComponent(btn_cifrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_cifrar)
+                    .addComponent(btn_Descrifrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_trans)
                 .addGap(52, 52, 52))
@@ -379,6 +392,10 @@ public class Diccionario extends javax.swing.JFrame {
         ayuda.setVisible(true);
     }//GEN-LAST:event_btn_HelpActionPerformed
 
+    private void btn_DescrifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DescrifrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_DescrifrarActionPerformed
+
 //    SUBRUTINA INSERTAR PALABRAS
     void InsertarPalabra(int n) {
         String tempp;
@@ -472,6 +489,7 @@ public class Diccionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Descrifrar;
     private javax.swing.JButton btn_Help;
     private javax.swing.JButton btn_change;
     private javax.swing.JButton btn_cifrar;
