@@ -97,7 +97,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="btn_Descrifrar" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="btn_Descrifrar" min="-2" pref="181" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btn_cifrar" min="-2" pref="133" max="-2" attributes="0"/>
                   </Group>

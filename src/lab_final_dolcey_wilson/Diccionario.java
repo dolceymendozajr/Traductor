@@ -3,6 +3,7 @@ package lab_final_dolcey_wilson;
 import java.awt.HeadlessException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.media.j3d.J3DBuffer;
 import javax.swing.JOptionPane;
 
 public class Diccionario extends javax.swing.JFrame {
@@ -221,7 +222,7 @@ public class Diccionario extends javax.swing.JFrame {
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(btn_Descrifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_Descrifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_cifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -393,7 +394,10 @@ public class Diccionario extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_HelpActionPerformed
 
     private void btn_DescrifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DescrifrarActionPerformed
-        // TODO add your handling code here:
+        try {
+           String temp = JOptionPane.showInputDialog(rootPane, "Escriba la palabra cifrada en binario", "TEXTO CIFRADO", JOptionPane.OK_OPTION);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btn_DescrifrarActionPerformed
 
 //    SUBRUTINA INSERTAR PALABRAS
