@@ -132,9 +132,10 @@ public class Diccionario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Diccionario");
         setName("Diccionario"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1300, 600));
+        setPreferredSize(new java.awt.Dimension(780, 500));
         setResizable(false);
 
+        btn_Help.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
         btn_Help.setText("Info / Help");
         btn_Help.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,7 +171,7 @@ public class Diccionario extends javax.swing.JFrame {
         });
 
         btn_cifrar.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 14)); // NOI18N
-        btn_cifrar.setText("CIFRAR TRAD.");
+        btn_cifrar.setText("CIFRAR TRADUCCIÓN");
         btn_cifrar.setEnabled(false);
         btn_cifrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,7 +180,7 @@ public class Diccionario extends javax.swing.JFrame {
         });
 
         btn_Descrifrar.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 14)); // NOI18N
-        btn_Descrifrar.setText("<html>INGRESAR TEXTO<br> CIFRADO<html>");
+        btn_Descrifrar.setText("DESCIFRAR");
         btn_Descrifrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_DescrifrarActionPerformed(evt);
@@ -217,35 +218,34 @@ public class Diccionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(btn_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_Descrifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_i1)
+                            .addComponent(TRAD1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Help)
+                            .addComponent(btn_Descrifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_i1)
-                                    .addComponent(TRAD1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btn_cifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(TRAD2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lbl_i2)
-                                    .addComponent(jButton1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(143, 143, 143)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(btn_Help)
+                                .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TRAD2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_i2)
+                            .addComponent(jButton1)
+                            .addComponent(btn_cifrar)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(274, 274, 274)
-                        .addComponent(btn_trans, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Help)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -261,16 +261,13 @@ public class Diccionario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(btn_change, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(btn_Descrifrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(btn_cifrar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_cifrar)
+                    .addComponent(btn_Descrifrar))
+                .addGap(18, 18, 18)
                 .addComponent(btn_trans)
-                .addGap(20, 20, 20))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -387,7 +384,7 @@ public class Diccionario extends javax.swing.JFrame {
 
     private void btn_DescrifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DescrifrarActionPerformed
         try {
-           String temp = JOptionPane.showInputDialog(rootPane, "Escriba la palabra cifrada en binario", "TEXTO CIFRADO", JOptionPane.OK_OPTION);
+           String temp = JOptionPane.showInputDialog(rootPane, "Escriba la palabra cifrada en binario", "TEXTO CIFRADO", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btn_DescrifrarActionPerformed

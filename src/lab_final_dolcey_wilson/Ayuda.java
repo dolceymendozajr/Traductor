@@ -14,6 +14,7 @@ public class Ayuda extends javax.swing.JFrame {
      */
     public Ayuda() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
