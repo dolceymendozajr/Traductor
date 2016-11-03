@@ -11,8 +11,6 @@ public class Cifrado extends javax.swing.JFrame {
     public Cifrado() {
         initComponents();
         setLocationRelativeTo(null);
-        
-        btn_Siguiente.setText("VER PALABRAS");
     }
 
     @SuppressWarnings("unchecked")
@@ -56,7 +54,7 @@ public class Cifrado extends javax.swing.JFrame {
         txt_Propio_Vigenere.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 16)); // NOI18N
 
         btn_Siguiente.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        btn_Siguiente.setText("SIGUIENTE PALABRA");
+        btn_Siguiente.setText("VER PALABRAS");
         btn_Siguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_SiguienteActionPerformed(evt);
@@ -174,7 +172,6 @@ public class Cifrado extends javax.swing.JFrame {
         i = 0;
         palabras = pals;
         pass = clave;
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

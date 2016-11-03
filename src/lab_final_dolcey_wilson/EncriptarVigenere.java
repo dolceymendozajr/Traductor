@@ -27,9 +27,6 @@ public class EncriptarVigenere {
         dicc[30] = 'ó';
         dicc[31] = 'ú';
         
-//        for (int i = 0; i < dicc.length; i++)
-//            System.out.println(dicc[i]);
-        
         // BLOQUE 2: GENERAR LOS VECTORES CON LA PALABRA Y LA CLAVE :)
         int pos = 0, j;
         for (j = 0; j < pass.length(); j++) // TOMA CADA CARÀCTER DE LA CLAVE Y LA LLEVA A UN VECTOR

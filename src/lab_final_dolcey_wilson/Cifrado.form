@@ -146,7 +146,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft Yi Baiti" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="SIGUIENTE PALABRA"/>
+        <Property name="text" type="java.lang.String" value="VER PALABRAS"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_SiguienteActionPerformed"/>
