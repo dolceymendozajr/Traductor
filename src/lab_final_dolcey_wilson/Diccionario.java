@@ -344,14 +344,13 @@ public class Diccionario extends javax.swing.JFrame {
         Pattern patt2 = Pattern.compile("[ñáéíóú]");
         Matcher matt;
         int a = 0;
-        
+
         Cifrado cifrado = new Cifrado();
         String[] palabras = txtarea_trad2.getText().split(",");
         String clave = "";
         String temp = "";
         temp = JOptionPane.showInputDialog(rootPane, "Escriba la contraseña para encriptar por Vigenère", "CONTRASEÑA", JOptionPane.INFORMATION_MESSAGE);
-        
-        
+
         for (int i = 0; i < temp.length(); i++) {
             matt = patt1.matcher(temp.substring(i, i +1));
             if (matt.matches()) {
@@ -362,32 +361,31 @@ public class Diccionario extends javax.swing.JFrame {
                     a++;
             }
         }
-        
-        if (temp.equals(""))
+
+        if (temp.equals("")) {
             JOptionPane.showMessageDialog(rootPane, "La clave no puede estar vacía", "ERROR", JOptionPane.ERROR_MESSAGE);
-        else if (a < temp.length())
+        } else if (a < temp.length()) {
             JOptionPane.showMessageDialog(rootPane, "La clave solo puede contener letras", "ERROR", JOptionPane.ERROR_MESSAGE);
-        else {
+        } else {
             try {
-                clave = temp;
-                Cifrado.PasarDatos(palabras, clave);
+                Cifrado.PasarDatos(palabras, temp);
                 cifrado.setVisible(true);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Ha ocurrido un error. Verifique que la contraseña y el texto a cifrar está bien escrito", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }  
-        
+        }
+
     }//GEN-LAST:event_btn_cifrarActionPerformed
 
     private void btn_HelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HelpActionPerformed
         Ayuda ayuda = new Ayuda();
-        
+
         ayuda.setVisible(true);
     }//GEN-LAST:event_btn_HelpActionPerformed
 
     private void btn_DescrifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DescrifrarActionPerformed
         try {
-           String temp = JOptionPane.showInputDialog(rootPane, "Escriba la palabra cifrada en binario", "TEXTO CIFRADO", JOptionPane.INFORMATION_MESSAGE);
+            String temp = JOptionPane.showInputDialog(rootPane, "Escriba la palabra cifrada en binario", "TEXTO CIFRADO", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btn_DescrifrarActionPerformed

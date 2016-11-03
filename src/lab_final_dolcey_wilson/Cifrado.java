@@ -6,6 +6,7 @@ public class Cifrado extends javax.swing.JFrame {
     static String[] palabras;
     static String pass;
     static int i = 0;
+    static String[] binarios;
     
     public Cifrado() {
         initComponents();
@@ -49,7 +50,7 @@ public class Cifrado extends javax.swing.JFrame {
         jLabel5.setText("BINARIO");
 
         txt_Palabra.setEditable(false);
-        txt_Palabra.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 24)); // NOI18N
+        txt_Palabra.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 30)); // NOI18N
 
         txt_Propio_Vigenere.setEditable(false);
         txt_Propio_Vigenere.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 16)); // NOI18N
@@ -120,7 +121,7 @@ public class Cifrado extends javax.swing.JFrame {
             
             txt_Palabra.setText(palabras[i]);
             txt_Propio.setText(MetodoEncript.encrip(palabras[i]));
-            txt_Propio_Vigenere.setText(pass);
+            txt_Propio_Vigenere.setText(EncriptarVigenere.Encript(txt_Propio.getText(), pass));
         } else {
             JOptionPane.showMessageDialog(this, "No hay más palabras por mostrar", "ERROR", JOptionPane.ERROR_MESSAGE);
             btn_Siguiente.setEnabled(false);
@@ -165,12 +166,13 @@ public class Cifrado extends javax.swing.JFrame {
     public static void PasarDatos(String[] pals, String clave) {
         i = 0;
         palabras = pals;
-        for (String palabra : palabras)
-            System.out.println(palabra);
         pass = clave;
-        System.out.println(pass);
-    }
 
+    }
+    
+    public static void UnirBinario(String[] todas_palabras, int i) {
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btn_Siguiente;
     private javax.swing.JLabel jLabel1;
