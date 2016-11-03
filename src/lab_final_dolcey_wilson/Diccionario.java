@@ -43,6 +43,8 @@ public class Diccionario extends javax.swing.JFrame {
     public String cadena;
     public int lim = 0;
     public final int p_lim = 100;
+    static boolean encontrada_español = false;
+    static boolean encontrada_ingles = false;
 
 //    CONSTRUCTOR
     public Diccionario() {
@@ -302,9 +304,19 @@ public class Diccionario extends javax.swing.JFrame {
                 if (lbl_i1.getText().equalsIgnoreCase("ESPAÑOL")) {
                     txtarea_trad2.setText(traduce_to_Ingles(arreglo));
                 }
-                if (!txtarea_trad2.getText().isEmpty()) // PERMITE PRESIONAR EL BOTON CIFRAR TRAD. SI SE TRADUJO ALGO 
+                if (!txtarea_trad2.getText().equals("")) // PERMITE PRESIONAR EL BOTON CIFRAR TRAD. SI SE TRADUJO ALGO 
                 {
-                    btn_cifrar.setEnabled(true);
+                    if (lbl_i1.getText().equalsIgnoreCase("INGLES")) {
+                        if (encontrada_español == true)
+                            btn_cifrar.setEnabled(true);
+                        else
+                            txtarea_trad2.setText("NO ENCONTRADO");
+                    } else {
+                        if (encontrada_ingles == true)
+                            btn_cifrar.setEnabled(true);
+                        else
+                            txtarea_trad2.setText("NO ENCONTRADO");
+                    }                       
                 }
             }
         } catch (Exception e) {
@@ -370,6 +382,7 @@ public class Diccionario extends javax.swing.JFrame {
             try {
                 Cifrado.PasarDatos(palabras, temp);
                 cifrado.setVisible(true);
+                btn_cifrar.setEnabled(false);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Ha ocurrido un error. Verifique que la contraseña y el texto a cifrar está bien escrito", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
@@ -417,11 +430,13 @@ public class Diccionario extends javax.swing.JFrame {
     }
 
 //    FUNCION TRADUCIR A ESPAÑOL
-    String traduce_to_Español(String[] ing) {
+    static String traduce_to_Español(String[] ing) {
         String trad = "";
+        encontrada_español = false;
         for (String ing1 : ing) {
             for (int j = 0; j < p_ingles.length; j++) {
                 if (ing1.equalsIgnoreCase(p_ingles[j])) {
+                    encontrada_español = true;
                     if (!trad.isEmpty()) {
                         trad = trad + "," + p_español[j];
                     } else {
@@ -430,15 +445,18 @@ public class Diccionario extends javax.swing.JFrame {
                 }
             }
         }
+        
         return trad;
     }
 
 //    FUNCION TRADUCIR A INGLES
-    String traduce_to_Ingles(String[] esp) {
+    static String traduce_to_Ingles(String[] esp) {
         String trad = "";
+        encontrada_ingles = false;
         for (String esp1 : esp) {
             for (int j = 0; j < p_español.length; j++) {
                 if (esp1.equalsIgnoreCase(p_español[j])) {
+                    encontrada_ingles = true;
                     if (!trad.isEmpty()) {
                         trad = trad + "," + p_ingles[j];
                     } else {
@@ -488,7 +506,7 @@ public class Diccionario extends javax.swing.JFrame {
     private javax.swing.JButton btn_Descrifrar;
     private javax.swing.JButton btn_Help;
     private javax.swing.JButton btn_change;
-    private javax.swing.JButton btn_cifrar;
+    public static javax.swing.JButton btn_cifrar;
     private javax.swing.JButton btn_trans;
     private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;

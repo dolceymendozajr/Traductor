@@ -13,7 +13,6 @@ public class Cifrado extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         btn_Siguiente.setText("VER PALABRAS");
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -30,6 +29,7 @@ public class Cifrado extends javax.swing.JFrame {
         btn_Siguiente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_Propio_Vigenere_BInario = new javax.swing.JTextArea();
+        txt_Clave = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -68,6 +68,9 @@ public class Cifrado extends javax.swing.JFrame {
         txt_Propio_Vigenere_BInario.setEnabled(false);
         jScrollPane1.setViewportView(txt_Propio_Vigenere_BInario);
 
+        txt_Clave.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txt_Clave.setText("Clave: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,19 +83,22 @@ public class Cifrado extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txt_Propio, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
                     .addComponent(txt_Propio_Vigenere)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(154, 154, 154))
                     .addComponent(txt_Palabra)
                     .addComponent(jScrollPane1)
-                    .addComponent(btn_Siguiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_Siguiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_Clave, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txt_Clave))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_Palabra, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -116,19 +122,20 @@ public class Cifrado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SiguienteActionPerformed
+        if (i == 0)
+            txt_Clave.setText("Clave: " + pass);
         if (i < palabras.length) {
             btn_Siguiente.setText("Sig. Palabra");
             
             txt_Palabra.setText(palabras[i]);
             txt_Propio.setText(MetodoEncript.encrip(palabras[i]));
             txt_Propio_Vigenere.setText(EncriptarVigenere.Encript(txt_Propio.getText(), pass));
+            txt_Propio_Vigenere_BInario.setText(Binario.Convertir(txt_Propio_Vigenere.getText()));
         } else {
             JOptionPane.showMessageDialog(this, "No hay más palabras por mostrar", "ERROR", JOptionPane.ERROR_MESSAGE);
             btn_Siguiente.setEnabled(false);
         }
         i++;
-        
-        
     }//GEN-LAST:event_btn_SiguienteActionPerformed
 
     public static void main(String args[]) {
@@ -169,10 +176,7 @@ public class Cifrado extends javax.swing.JFrame {
         pass = clave;
 
     }
-    
-    public static void UnirBinario(String[] todas_palabras, int i) {
 
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btn_Siguiente;
     private javax.swing.JLabel jLabel1;
@@ -180,6 +184,7 @@ public class Cifrado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private static javax.swing.JLabel txt_Clave;
     public static javax.swing.JTextField txt_Palabra;
     public static javax.swing.JTextField txt_Propio;
     public static javax.swing.JTextField txt_Propio_Vigenere;
