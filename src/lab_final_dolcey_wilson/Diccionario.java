@@ -243,7 +243,7 @@ public class Diccionario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +271,7 @@ public class Diccionario extends javax.swing.JFrame {
                     .addComponent(btn_Descrifrar))
                 .addGap(18, 18, 18)
                 .addComponent(btn_trans)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -346,7 +346,7 @@ public class Diccionario extends javax.swing.JFrame {
         int a = 0;
         
         Cifrado cifrado = new Cifrado();
-        String[] letras = txtarea_trad2.getText().split(",");
+        String[] palabras = txtarea_trad2.getText().split(",");
         String clave = "";
         String temp = "";
         temp = JOptionPane.showInputDialog(rootPane, "Escriba la contraseña para encriptar por Vigenère", "CONTRASEÑA", JOptionPane.INFORMATION_MESSAGE);
@@ -369,10 +369,9 @@ public class Diccionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "La clave solo puede contener letras", "ERROR", JOptionPane.ERROR_MESSAGE);
         else {
             try {
-                Cifrado.i = 0;
-                Cifrado.vacio = 0;
-                Cifrado.pasarPalabras(letras, temp);
-                cifrado.setVisible(true); 
+                clave = temp;
+                Cifrado.PasarDatos(palabras, clave);
+                cifrado.setVisible(true);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane, "Ha ocurrido un error. Verifique que la contraseña y el texto a cifrar está bien escrito", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
