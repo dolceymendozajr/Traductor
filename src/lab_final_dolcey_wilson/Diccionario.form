@@ -98,7 +98,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lbl_i1" min="-2" max="-2" attributes="0"/>
                                   <Component id="TRAD1" min="-2" pref="307" max="-2" attributes="0"/>
-                                  <Component id="btn_Descrifrar" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
+                                  <Component id="btn_Descrifrar" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -239,7 +239,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Microsoft Yi Baiti" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="DESCIFRAR"/>
+        <Property name="text" type="java.lang.String" value="DESCIFRAR PALABRA"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_DescrifrarActionPerformed"/>
@@ -288,6 +288,9 @@
               <Dimension value="[230, 100]"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -300,6 +303,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextArea" name="txtarea_trad2">
           <Properties>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Microsoft Yi Baiti" size="18" style="0"/>

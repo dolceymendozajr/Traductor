@@ -61,9 +61,9 @@ public class Cifrado extends javax.swing.JFrame {
             }
         });
 
+        txt_Propio_Vigenere_BInario.setEditable(false);
         txt_Propio_Vigenere_BInario.setColumns(20);
         txt_Propio_Vigenere_BInario.setRows(5);
-        txt_Propio_Vigenere_BInario.setEnabled(false);
         jScrollPane1.setViewportView(txt_Propio_Vigenere_BInario);
 
         txt_Clave.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

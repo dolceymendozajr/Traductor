@@ -7,6 +7,10 @@ import javax.swing.JOptionPane;
 
 public class Diccionario extends javax.swing.JFrame {
 
+    static Pattern patt1 = Pattern.compile("[a-zA-Z]");
+    static Pattern patt2 = Pattern.compile("[ñáéíóú]");
+    static Matcher matt;
+
     public static String default_ingles[] = {"advice", "career", "challenge", "experience",
         "hire", "ideal", "interview", "manager",
         "long", "reward", "salary", "red",
@@ -52,6 +56,7 @@ public class Diccionario extends javax.swing.JFrame {
             p_ingles[i] = default_ingles[i];
             p_español[i] = default_español[i];
         }
+
         boolean sw = true;
         lim = p_lim;
         while (sw) {
@@ -182,7 +187,7 @@ public class Diccionario extends javax.swing.JFrame {
         });
 
         btn_Descrifrar.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 14)); // NOI18N
-        btn_Descrifrar.setText("DESCIFRAR");
+        btn_Descrifrar.setText("DESCIFRAR PALABRA");
         btn_Descrifrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_DescrifrarActionPerformed(evt);
@@ -205,6 +210,7 @@ public class Diccionario extends javax.swing.JFrame {
         txtarea_trad1.setPreferredSize(new java.awt.Dimension(230, 100));
         TRAD1.setViewportView(txtarea_trad1);
 
+        txtarea_trad2.setEditable(false);
         txtarea_trad2.setColumns(20);
         txtarea_trad2.setFont(new java.awt.Font("Microsoft Yi Baiti", 0, 18)); // NOI18N
         txtarea_trad2.setRows(5);
@@ -229,7 +235,7 @@ public class Diccionario extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbl_i1)
                                     .addComponent(TRAD1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_Descrifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btn_Descrifrar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(btn_Help)))
@@ -307,16 +313,16 @@ public class Diccionario extends javax.swing.JFrame {
                 if (!txtarea_trad2.getText().equals("")) // PERMITE PRESIONAR EL BOTON CIFRAR TRAD. SI SE TRADUJO ALGO 
                 {
                     if (lbl_i1.getText().equalsIgnoreCase("INGLES")) {
-                        if (encontrada_español == true)
+                        if (encontrada_español == true) {
                             btn_cifrar.setEnabled(true);
-                        else
+                        } else {
                             txtarea_trad2.setText("NO ENCONTRADO");
+                        }
+                    } else if (encontrada_ingles == true) {
+                        btn_cifrar.setEnabled(true);
                     } else {
-                        if (encontrada_ingles == true)
-                            btn_cifrar.setEnabled(true);
-                        else
-                            txtarea_trad2.setText("NO ENCONTRADO");
-                    }                       
+                        txtarea_trad2.setText("NO ENCONTRADO");
+                    }
                 }
             }
         } catch (Exception e) {
@@ -352,9 +358,7 @@ public class Diccionario extends javax.swing.JFrame {
 
 //    AL PRESIONAR EL BOTON CIFRAR TRAD.
     private void btn_cifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cifrarActionPerformed
-        Pattern patt1 = Pattern.compile("[a-zA-Z]");
-        Pattern patt2 = Pattern.compile("[ñáéíóú]");
-        Matcher matt;
+
         int a = 0;
 
         Cifrado cifrado = new Cifrado();
@@ -363,22 +367,12 @@ public class Diccionario extends javax.swing.JFrame {
         String temp = "";
         temp = JOptionPane.showInputDialog(rootPane, "Escriba la contraseña para encriptar por Vigenère", "CONTRASEÑA", JOptionPane.INFORMATION_MESSAGE);
 
-        for (int i = 0; i < temp.length(); i++) {
-            matt = patt1.matcher(temp.substring(i, i +1));
-            if (matt.matches()) {
-                a++;
-            } else {
-                matt = patt2.matcher(temp.substring(i, i + 1));
-                if (matt.matches())
-                    a++;
-            }
-        }
 
-        if (temp.equals("")) {
+        if (temp.equals(""))
             JOptionPane.showMessageDialog(rootPane, "La clave no puede estar vacía", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else if (a < temp.length()) {
+        else if (ValidarContraseñas(temp) < temp.length())
             JOptionPane.showMessageDialog(rootPane, "La clave solo puede contener letras", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else {
+        else {
             try {
                 Cifrado.PasarDatos(palabras, temp);
                 cifrado.setVisible(true);
@@ -399,6 +393,38 @@ public class Diccionario extends javax.swing.JFrame {
     private void btn_DescrifrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DescrifrarActionPerformed
         try {
             String temp = JOptionPane.showInputDialog(rootPane, "Escriba la palabra cifrada en binario", "TEXTO CIFRADO", JOptionPane.INFORMATION_MESSAGE);
+
+            if (temp.isEmpty())
+                JOptionPane.showMessageDialog(rootPane, "El texto cifrado no puede estar vacío", "ERROR", JOptionPane.ERROR_MESSAGE);
+            else {
+                int a = 0;
+                int espacios = 0;
+                for (int i = 0; i < temp.length(); i++) {
+                    if (temp.substring(i, i + 1).equals(" "))
+                        espacios++;
+                    else if (temp.substring(i, i + 1).equals("1")  || temp.substring(i, i + 1).equals("0"))
+                        a++;
+                }
+                if ((a + espacios) < temp.length() || espacios == temp.length())
+                    JOptionPane.showMessageDialog(rootPane, "El texto cifrado solo puede contener números binarios, y un espacio separando cada octeto", "ERROR", JOptionPane.ERROR_MESSAGE);
+                else {
+                    try {
+                        String clave = JOptionPane.showInputDialog(rootPane, "Escriba la contraseña para el cifrado Vigenère", "CONTRASEÑA VIGENÈRE", JOptionPane.INFORMATION_MESSAGE);
+
+                        if (ValidarContraseñas(clave) < clave.length())
+                            JOptionPane.showMessageDialog(rootPane, "La clave solo debe estar conformada por letras", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        else {
+                            try {
+                                txtarea_trad1.setText(Descrifrar.Descifrar(temp, clave));
+                            } catch (Exception e) {
+                            }
+                        }
+
+                    } catch (Exception e) {
+                    }
+                }
+            }
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btn_DescrifrarActionPerformed
@@ -445,7 +471,7 @@ public class Diccionario extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         return trad;
     }
 
@@ -500,6 +526,18 @@ public class Diccionario extends javax.swing.JFrame {
         });
     }
 
+    public static int ValidarContraseñas(String texto) {
+        int a = 0;
+        for (int i = 0; i < texto.length(); i++) {
+            matt = patt1.matcher(texto.substring(i, i + 1));
+            if (!matt.matches()) {
+                matt = patt2.matcher(texto.substring(i, i + 1));
+                if (matt.matches())
+                    a++;
+            } else a++;
+        }
+        return a;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane TRAD1;
     private javax.swing.JScrollPane TRAD2;
@@ -517,7 +555,7 @@ public class Diccionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbl_i1;
     private javax.swing.JLabel lbl_i2;
-    private javax.swing.JTextArea txtarea_trad1;
+    public static javax.swing.JTextArea txtarea_trad1;
     public static javax.swing.JTextArea txtarea_trad2;
     // End of variables declaration//GEN-END:variables
 }
