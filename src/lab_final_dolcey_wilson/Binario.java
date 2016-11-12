@@ -39,9 +39,9 @@ public class Binario {
                     ascii = ascii / 2;
                 }
 
-                for (int j = 7; j >= 0; j--) {
+                for (int j = 7; j >= 0; j--)
                     text_convertido += temp.substring(j, j + 1);
-                }
+                
                 text_convertido += " ";
             } else
                 text_convertido += temp + " ";
@@ -70,14 +70,9 @@ public class Binario {
                 int sum = 0;
                 int n = 7;
                 for (int k = 0; k < frase[i].length(); k++) {
-                    System.out.println("SUM: " + sum);
-                    System.out.println("N: " + n);
-                    System.out.println(frase[i].substring(k, k + 1) + " x 2^" + n + " = " + Integer.parseInt(frase[i].substring(k, k + 1)) * (Math.pow(2,n)));
                    sum += (Integer.parseInt(frase[i].substring(k, k + 1)) * (Math.pow(2, n)));
                    n--;
                 }
-                System.out.println("SUM: " + sum);
-                System.out.println("charsum: " + (char) sum);
                 pal_final += (char) sum;
             } else
                 pal_final += temp;
