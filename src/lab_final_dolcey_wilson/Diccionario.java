@@ -415,7 +415,11 @@ public class Diccionario extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(rootPane, "La clave solo debe estar conformada por letras", "ERROR", JOptionPane.ERROR_MESSAGE);
                         else {
                             try {
-                                txtarea_trad1.setText(Descrifrar.Descifrar(temp, clave));
+                                if (txtarea_trad1.equals(""))
+                                    txtarea_trad1.setText(Descrifrar.Descifrar(temp, clave));
+                                else
+                                    txtarea_trad1.setText(txtarea_trad1.getText() + "," + Descrifrar.Descifrar(temp, clave));
+                                
                             } catch (Exception e) {
                             }
                         }
